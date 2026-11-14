@@ -1,0 +1,93 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "dp_classcond",
+    "synth": {
+      "epsilon": 10.0,
+      "epsilon_rate": 1.0,
+      "epsilon_fraud_share": 0.6,
+      "n_bins": 32
+    },
+    "n_synth": 10000
+  },
+  "run": {
+    "utc": "20260829T095504Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 8,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0008,
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9992,
+      "typology_cash_out": 3,
+      "typology_transfer": 5
+    },
+    "uncertified_fraud": 0
+  },
+  "dp": {
+    "mechanism": "class_conditional_laplace_histogram",
+    "epsilon": 10.0,
+    "delta": 0.0,
+    "composition": "sequential_rate_plus_both_classes",
+    "epsilon_rate": 1.0,
+    "epsilon_fraud": 5.3999999999999995,
+    "epsilon_legit": 3.6,
+    "p_fraud_hat": 0.001293280398900631,
+    "note": "Partition by label is not parallel composition; \u03b5_total is sequential."
+  },
+  "fidelity": {
+    "wasserstein1": {
+      "step": 7.542879999999998,
+      "amount": 1419846.530964119,
+      "oldbalanceOrg": 1415041.6559496396,
+      "newbalanceOrig": 1410262.8248654401,
+      "oldbalanceDest": 1227035.713774002,
+      "newbalanceDest": 1189666.7618454825
+    },
+    "total_variation": {
+      "type": 0.009959999999999986
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.10556324280416057,
+    "recall_at_1pct_fpr": 0.3020833333333333,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50034428288,
+    "mean_nn_distance_members": 2.7318720736255004,
+    "mean_nn_distance_nonmembers": 2.729230789841878,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.6397333333333334,
+    "public_evasion_asr": 0.2916666666666667,
+    "mean_abs_margin_on_test": 0.4990691516918743
+  }
+}

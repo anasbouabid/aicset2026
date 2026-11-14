@@ -1,0 +1,150 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "ctgan",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "row_select": "topk",
+      "rate_grid": [
+        null,
+        0.01,
+        0.02,
+        0.05
+      ],
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    }
+  },
+  "run": {
+    "utc": "20260829T124835Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 500,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.05,
+  "c_pub": {
+    "enabled": true,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9500,
+      "typology_transfer": 331,
+      "typology_cash_out": 169
+    },
+    "uncertified_fraud": 0
+  },
+  "r": {
+    "enabled": true,
+    "c_pub": true,
+    "row_select": "topk",
+    "n_pool": 120000,
+    "n_release": 10000,
+    "n_release_fraud": 500,
+    "target_fraud_rate": 0.05,
+    "train_fraud_rate": 0.001292,
+    "rate_grid": [
+      {
+        "target_fraud_rate": 0.001292,
+        "n_fraud": 13,
+        "val_pr_auc": 0.3125509508344608,
+        "val_recall_at_1pct_fpr": 0.44329896907216493
+      },
+      {
+        "target_fraud_rate": 0.01,
+        "n_fraud": 100,
+        "val_pr_auc": 0.4815096135231458,
+        "val_recall_at_1pct_fpr": 0.5670103092783505
+      },
+      {
+        "target_fraud_rate": 0.02,
+        "n_fraud": 200,
+        "val_pr_auc": 0.5538291427155091,
+        "val_recall_at_1pct_fpr": 0.6701030927835051
+      },
+      {
+        "target_fraud_rate": 0.05,
+        "n_fraud": 500,
+        "val_pr_auc": 0.6551282195392589,
+        "val_recall_at_1pct_fpr": 0.7938144329896907
+      }
+    ],
+    "min_margin": 0.15,
+    "lambda_ua": 1.0,
+    "n_val_candidates": 0,
+    "n_margin_kept": 119394,
+    "mean_u_h_row": 0.8896817019399073,
+    "mean_u_a_row": 0.010288659566863862,
+    "mean_margin_pool": 0.49485567021656807,
+    "mean_margin_release": 0.4998813050862482,
+    "val_pr_auc_selected": 0.6551282195392589,
+    "c_pub_stats": {
+      "n_drawn": 120204,
+      "n_kept": 120000,
+      "reject_rate": 0.001697114904662067,
+      "certificate_coverage": {
+        "legit": 100998,
+        "typology_transfer": 9197,
+        "typology_cash_out": 9805
+      },
+      "uncertified_fraud": 0
+    },
+    "note": "C_priv is the train-fitted bank detector; val is the U_h probe. Neither ships. topk is deterministic C_priv ranking; val_tables is the 13-row lottery (legacy)."
+  },
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 39.823848,
+      "amount": 1020076.5193826153,
+      "oldbalanceOrg": 404482.6227282474,
+      "newbalanceOrig": 541611.0525512241,
+      "oldbalanceDest": 1596265.034631877,
+      "newbalanceDest": 2674984.798233264
+    },
+    "total_variation": {
+      "type": 0.8341559999999999
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.660585916285874,
+    "recall_at_1pct_fpr": 0.71875,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50090165536,
+    "mean_nn_distance_members": 0.9768424115977375,
+    "mean_nn_distance_nonmembers": 0.9767488235383269,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.6717466666666667,
+    "public_evasion_asr": 0.2916666666666667,
+    "surrogate_evasion_asr": 0.5416666666666666,
+    "mean_abs_margin_on_test": 0.4990691516918743,
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation."
+  }
+}

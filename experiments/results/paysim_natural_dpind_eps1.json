@@ -1,0 +1,90 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "dp_independent",
+    "synth": {
+      "epsilon": 1.0,
+      "n_bins": 32
+    },
+    "n_synth": 10000
+  },
+  "run": {
+    "utc": "20260829T095039Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 6,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0006,
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 9997,
+    "constraint_violation_rate": 0.0003,
+    "certificate_coverage": {
+      "legit": 9994,
+      "typology_cash_out": 3,
+      "uncertified_fraud": 3
+    },
+    "uncertified_fraud": 3
+  },
+  "dp": {
+    "mechanism": "laplace_histogram",
+    "epsilon": 1.0,
+    "delta": 0.0,
+    "composition": "sequential_equal_split",
+    "n_columns": 8,
+    "epsilon_per_column": 0.125,
+    "n_bins": 32,
+    "bounds": "public_paysim_domain"
+  },
+  "fidelity": {
+    "wasserstein1": {
+      "step": 7.386615999999997,
+      "amount": 1416507.0825776407,
+      "oldbalanceOrg": 1456362.5003768406,
+      "newbalanceOrig": 1423345.4110102386,
+      "oldbalanceDest": 1223546.2539587226,
+      "newbalanceDest": 1212549.3840802822
+    },
+    "total_variation": {
+      "type": 0.004424000000000009
+    },
+    "constraint_violation_rate": 0.0003
+  },
+  "honest_utility": {
+    "pr_auc": 0.0010067306184890039,
+    "recall_at_1pct_fpr": 0.0,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50022436912,
+    "mean_nn_distance_members": 2.719397398005045,
+    "mean_nn_distance_nonmembers": 2.7172715354844423,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.13990666666666668,
+    "public_evasion_asr": 0.2916666666666667,
+    "mean_abs_margin_on_test": 0.4990691516918743
+  }
+}

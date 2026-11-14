@@ -1,0 +1,34 @@
+[project]
+name = "synthfraud"
+version = "0.1.0"
+description = "Evaluation harness for asymmetric-utility synthetic fraud data"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scikit-learn>=1.3",
+  "scipy>=1.11",
+  "pyyaml>=6.0",
+  "pyarrow>=14.0",
+]
+
+[project.optional-dependencies]
+ctgan = ["ctgan>=0.10"]
+dp = ["smartnoise-synth>=1.0"]
+huggingface = ["huggingface_hub>=0.23"]
+xai = ["shap>=0.44"]
+lab = ["fastapi>=0.110", "uvicorn[standard]>=0.27"]
+
+[project.scripts]
+synthfraud = "synthfraud.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

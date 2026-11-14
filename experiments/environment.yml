@@ -1,0 +1,14 @@
+name: synthfraud
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas>=2.0,<3
+  - scikit-learn
+  - scipy
+  - pyyaml
+  - pyarrow
+  - pip:
+      - -e .

@@ -1,0 +1,166 @@
+{
+  "config": {
+    "seed": 1,
+    "dataset": "ieee_cis",
+    "ieee_cis": {
+      "path": "../data/raw/ieee_cis",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "ctgan",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    },
+    "r_outputs": [
+      {
+        "rate": 0.05,
+        "controllers": {
+          "rate_only": "results/ieee_cis_natural_ctgan_r05_rateonly_seed1.json"
+        }
+      }
+    ]
+  },
+  "run": {
+    "utc": "20260830T140543Z",
+    "python": "3.11.16"
+  },
+  "dataset": "ieee_cis",
+  "n_rows": 500000,
+  "n_fraud": 17495,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 1152,
+  "fraud_rate": 0.03499,
+  "synth_fraud_rate": 0.1152,
+  "release_schema": {
+    "numeric": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320"
+    ],
+    "categorical": [
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "label": "isFraud"
+  },
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 8848,
+      "typology_product_C": 464,
+      "typology_product_W": 423,
+      "typology_product_R": 90,
+      "typology_product_S": 75,
+      "typology_product_H": 100
+    },
+    "uncertified_fraud": 0
+  },
+  "r": null,
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "TransactionAmt": 38.57370796749681,
+      "TransactionDT": 465598.50402000017,
+      "C1": 7.5414109138973595,
+      "C2": 8.636543742786209,
+      "C13": 9.05319083694435,
+      "D1": 15.727132847115985,
+      "V307": 219.68644348746628,
+      "V310": 25.393868276948325,
+      "V314": 8.244094164363016,
+      "V317": 182.38546412300383,
+      "V320": 25.12047332261817
+    },
+    "total_variation": {
+      "ProductCD": 0.21583200000000002,
+      "card4": 0.12719200000000003,
+      "card6": 0.20510800000000007,
+      "P_emaildomain": 0.14824799999999996,
+      "DeviceType": 0.21265599999999998
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.34926217181921987,
+    "recall_at_1pct_fpr": 0.3090701219512195,
+    "n_test": 75000,
+    "n_test_fraud": 2624
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50254070104,
+    "mean_nn_distance_members": 0.7128310549497686,
+    "mean_nn_distance_nonmembers": 0.7320594863954765,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.7322133333333334,
+    "public_evasion_asr": 0.1875,
+    "surrogate_evasion_asr": 0.10022865853658537,
+    "mean_abs_margin_on_test": 0.4720129323085456,
+    "release_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "bank_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation. If release_feature_cols is a subset of bank_feature_cols, the surrogate is the T1 adversary who only has the released columns."
+  }
+}

@@ -1,0 +1,17 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: ctgan
+n_synth: 10000
+c_pub_filter: true
+# Same G: unfiltered 10k plus C_pub-filtered 10k.
+output_unfiltered: results/paysim_natural_ctgan.json
+output: results/paysim_natural_ctgan_cpub.json

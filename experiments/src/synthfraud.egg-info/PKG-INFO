@@ -1,0 +1,114 @@
+Metadata-Version: 2.4
+Name: synthfraud
+Version: 0.1.0
+Summary: Evaluation harness for asymmetric-utility synthetic fraud data
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.24
+Requires-Dist: pandas>=2.0
+Requires-Dist: scikit-learn>=1.3
+Requires-Dist: scipy>=1.11
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: pyarrow>=14.0
+Provides-Extra: ctgan
+Requires-Dist: ctgan>=0.10; extra == "ctgan"
+Provides-Extra: dp
+Requires-Dist: smartnoise-synth>=1.0; extra == "dp"
+Provides-Extra: huggingface
+Requires-Dist: huggingface_hub>=0.23; extra == "huggingface"
+
+# Evaluation harness
+
+Phase 1 of `notes/research-plan.md`: four metric families **before** building module G.
+
+## Python environment (Conda)
+
+Default is a named **conda-forge** env `synthfraud` (Python 3.11). File: `environment.yml`.
+
+```bash
+cd experiments
+conda env create -f environment.yml    # first time
+conda activate synthfraud
+# later: conda env update -n synthfraud -f environment.yml --prune
+# or:    ./scripts/setup_env.sh
+```
+
+If `conda` is missing from a new terminal after Miniforge install:
+
+```bash
+conda init zsh
+# restart the shell, or:
+eval "$(conda shell.zsh hook)"
+```
+
+Always run the harness **inside** `synthfraud`:
+
+```bash
+conda activate synthfraud
+python -m synthfraud --config configs/default.yaml
+```
+
+Do not use the leftover `experiments/.venv` (an earlier uv/venv attempt).
+
+## Watching progress
+
+Agent-run jobs in chat do not stream well. Run the harness **in your own terminal** (Cursor: Terminal → New Terminal):
+
+```bash
+conda activate synthfraud
+cd experiments
+python -u -m synthfraud --config configs/paysim_natural_ctgan_cpub.yaml
+```
+
+`-u` is unbuffered. Stages print as `[synthfraud HH:MM:SS] …` on stderr. CTGAN then shows a tqdm epoch bar (`1/50`, `2/50`, …). The quiet gap *before* that bar is the data transformer/GMM — it can take several minutes on 250k rows; that is expected.
+
+JSON reports are written to `results/` at the end; they are no longer dumped into the live log.
+
+## Protocol
+
+| Split | Role |
+| --- | --- |
+| `train` | Only input to the synthesizer (members for MIA) |
+| `ref` | Non-members for MIA; not used to train G |
+| `val` | Later: honest-utility probe for the release controller R |
+| `test` | Forever held-out **real** test for `U_h` |
+
+Default product (T1): evaluate a released table, not generator weights.
+
+## Metric families
+
+1. **Fidelity** — Wasserstein-1 / TVD; public-constraint violation rate.
+2. **Honest utility `U_h`** — train on synth, test on real (PR-AUC, recall at 1% FPR).
+3. **Privacy (Risk A)** — distance-based MIA AUC. Nearest-neighbour distance is logged, not a privacy claim.
+4. **Adversarial utility `U_a` (Risk B)** — surrogate agreement + public-constraint-legal evasion ASR.
+
+## Commands
+
+```bash
+conda activate synthfraud
+python -m synthfraud --config configs/default.yaml
+python -m synthfraud --config configs/paysim_identity.yaml
+python -m synthfraud --config configs/paysim_independent.yaml
+python -m synthfraud --config configs/paysim_ctgan.yaml
+python -m synthfraud --config configs/paysim_natural_identity.yaml
+python -m synthfraud --config configs/paysim_natural_identity_ntrain.yaml
+python -m synthfraud --config configs/paysim_natural_independent.yaml
+python -m synthfraud --config configs/paysim_natural_ctgan.yaml
+python -m synthfraud --config configs/paysim_natural_independent_cpub.yaml
+python -m synthfraud --config configs/paysim_natural_ctgan_cpub.yaml  # same G: unfiltered + C_pub
+```
+
+PaySim dump: `data/raw/paysim.parquet` (gitignored). Two protocols (keep both):
+
+- **enriched** (`configs/paysim_*.yaml`): all 8,213 fraud rows + 40k legit.
+- **natural** (`configs/paysim_natural_*.yaml`): stratified 500k-row draw at the dump rate (~0.13%). `n_rows: -1` is the full table.
+
+## Keeping results
+
+Venue is not locked. Every run writes:
+
+- `results/<name>.json` — latest pointer
+- `results/archive/<name>_<UTC>.json` — immutable copy
+
+Do not delete old protocol variants. Catalog numbers in `notes/findings.md`. JSON is tracked in git; model weights and parquet dumps are not.
+

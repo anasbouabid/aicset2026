@@ -1,0 +1,98 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "patectgan",
+    "synth": {
+      "epsilon": 10.0,
+      "preprocessor_eps": 1.0,
+      "sample_per_teacher": 10000,
+      "teacher_iters": 5,
+      "student_iters": 5
+    },
+    "n_synth": 10000
+  },
+  "run": {
+    "utc": "20260829T102240Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 8,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0008,
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 9996,
+    "constraint_violation_rate": 0.0004,
+    "certificate_coverage": {
+      "legit": 9992,
+      "typology_transfer": 1,
+      "uncertified_fraud": 4,
+      "typology_cash_out": 3
+    },
+    "uncertified_fraud": 4
+  },
+  "dp": {
+    "mechanism": "patectgan",
+    "epsilon_requested": 10.0,
+    "preprocessor_eps": 1.0,
+    "delta": 8e-09,
+    "sample_per_teacher": 10000,
+    "n_teachers_approx": 26,
+    "preprocessor_odometer": [
+      0.9999999999999999,
+      5.551115123125783e-16
+    ],
+    "cite": "jordon2019pategan",
+    "note": "SmartNoise PATE-CTGAN, not ICLR PATE-GAN. Training stops on spent \u03b5. Library shares one discriminator object across teachers (snsynth 1.0.8)."
+  },
+  "fidelity": {
+    "wasserstein1": {
+      "step": 54.392916,
+      "amount": 105722.82969999197,
+      "oldbalanceOrg": 835435.6264390794,
+      "newbalanceOrig": 820772.9912999999,
+      "oldbalanceDest": 809032.8902443217,
+      "newbalanceDest": 975140.8501754028
+    },
+    "total_variation": {
+      "type": 0.12547599999999998
+    },
+    "constraint_violation_rate": 0.0004
+  },
+  "honest_utility": {
+    "pr_auc": 0.004478380262827237,
+    "recall_at_1pct_fpr": 0.020833333333333332,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49902641691999994,
+    "mean_nn_distance_members": 0.5752410388286372,
+    "mean_nn_distance_nonmembers": 0.5698048582044781,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.46729333333333334,
+    "public_evasion_asr": 0.2916666666666667,
+    "mean_abs_margin_on_test": 0.4990691516918743
+  }
+}

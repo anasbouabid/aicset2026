@@ -1,0 +1,145 @@
+{
+  "config": {
+    "seed": 1,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "ctgan",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "row_select": "topk",
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    },
+    "r_outputs": [
+      {
+        "rate": 0.05,
+        "controllers": {
+          "rate_only": "results/paysim_natural_ctgan_r_v5_seed1_r05_rateonly.json"
+        },
+        "sanitizers": [
+          {
+            "name": "jitter",
+            "rel": 0.1,
+            "output": "results/paysim_natural_ctgan_r_v5_seed1_r05_jitter01.json"
+          },
+          {
+            "name": "jitter",
+            "rel": 0.5,
+            "output": "results/paysim_natural_ctgan_r_v5_seed1_r05_jitter05.json"
+          },
+          {
+            "name": "withhold",
+            "output": "results/paysim_natural_ctgan_r_v5_seed1_r05_withhold.json"
+          }
+        ]
+      }
+    ]
+  },
+  "run": {
+    "utc": "20260830T102006Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 1558,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.1558,
+  "release_schema": {
+    "numeric": [
+      "step",
+      "amount",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "oldbalanceDest",
+      "newbalanceDest"
+    ],
+    "categorical": [
+      "type"
+    ],
+    "label": "isFraud"
+  },
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 9774,
+    "constraint_violation_rate": 0.0226,
+    "certificate_coverage": {
+      "legit": 8442,
+      "typology_transfer": 817,
+      "typology_cash_out": 740,
+      "uncertified_fraud": 1
+    },
+    "uncertified_fraud": 1
+  },
+  "r": null,
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 43.52924,
+      "amount": 175289.05817561978,
+      "oldbalanceOrg": 159215.44164527958,
+      "newbalanceOrig": 198136.17937058143,
+      "oldbalanceDest": 113527.58634437165,
+      "newbalanceDest": 225705.1980201204
+    },
+    "total_variation": {
+      "type": 0.193244
+    },
+    "constraint_violation_rate": 0.0226
+  },
+  "honest_utility": {
+    "pr_auc": 0.7188812303281268,
+    "recall_at_1pct_fpr": 0.8556701030927835,
+    "n_test": 75000,
+    "n_test_fraud": 97
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50053385292,
+    "mean_nn_distance_members": 0.18844034099944634,
+    "mean_nn_distance_nonmembers": 0.18344293835424913,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.86408,
+    "public_evasion_asr": 0.23711340206185566,
+    "surrogate_evasion_asr": 0.7628865979381443,
+    "mean_abs_margin_on_test": 0.49908507657165074,
+    "release_feature_cols": [
+      "step",
+      "amount",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "type"
+    ],
+    "bank_feature_cols": [
+      "step",
+      "amount",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "type"
+    ],
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation. If release_feature_cols is a subset of bank_feature_cols, the surrogate is the T1 adversary who only has the released columns."
+  }
+}

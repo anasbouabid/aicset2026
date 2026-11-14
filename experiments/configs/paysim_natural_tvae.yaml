@@ -1,0 +1,25 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: tvae
+n_synth: 10000
+r_filter: true
+r:
+  pool_mult: 12
+  min_margin: 0.15
+  lambda_ua: 1.0
+  c_pub: true
+# TVAE, same 50-epoch budget as CTGAN T1. Do not overwrite CTGAN JSON.
+output_unfiltered: results/paysim_natural_tvae_unfiltered.json
+r_outputs:
+  - rate: 0.05
+    controllers:
+      rate_only: results/paysim_natural_tvae_r05_rateonly.json

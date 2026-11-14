@@ -1,0 +1,93 @@
+{
+  "config": {
+    "seed": 2,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "ctgan",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "min_margin": 0.15,
+      "n_val_candidates": 6,
+      "lambda_ua": 1.0,
+      "elite_mult": 4.0,
+      "c_pub": true
+    }
+  },
+  "run": {
+    "utc": "20260829T121142Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 13,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0013,
+  "c_pub": {
+    "enabled": true,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9987,
+      "typology_cash_out": 8,
+      "typology_transfer": 5
+    },
+    "uncertified_fraud": 0
+  },
+  "r": {
+    "enabled": true,
+    "ablation": "rate_only",
+    "target_fraud_rate": 0.001292
+  },
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 19.019028,
+      "amount": 34063.24501883934,
+      "oldbalanceOrg": 180354.57011242807,
+      "newbalanceOrig": 216394.66363402727,
+      "oldbalanceDest": 435122.30283233576,
+      "newbalanceDest": 540169.0080088597
+    },
+    "total_variation": {
+      "type": 0.14944000000000002
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.479578075726742,
+    "recall_at_1pct_fpr": 0.8125,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50120253838,
+    "mean_nn_distance_members": 0.18924148560949414,
+    "mean_nn_distance_nonmembers": 0.18573764585818034,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.85052,
+    "public_evasion_asr": 0.5104166666666666,
+    "surrogate_evasion_asr": 0.7291666666666666,
+    "mean_abs_margin_on_test": 0.4992757454603332,
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation."
+  }
+}

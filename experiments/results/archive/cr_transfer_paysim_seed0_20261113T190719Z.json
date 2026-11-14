@@ -1,0 +1,447 @@
+{
+  "protocol": "cr_transfer_evasion",
+  "corpus": "paysim",
+  "seed": 0,
+  "run": {
+    "utc": "20261113T190719Z",
+    "python": "3.11.16"
+  },
+  "definitions": {
+    "threshold": 0.5,
+    "bank": "HGB (max_depth 4, 80 iterations) on the real train split, fraud oversampled to 5%",
+    "surrogate": "same HGB configuration trained on the attacker's table",
+    "targets": "real held-out fraud rows with bank score >= threshold",
+    "attack": "rank public-constraint-legal edits by surrogate score (ascending; larger amount on ties), submit the first k to the bank; success if any has bank score < threshold",
+    "value@1": "retained amount fraction of the first submitted edit if it evades, else 0",
+    "n_boot": 1000
+  },
+  "n_test": 75000,
+  "n_test_fraud": 96,
+  "n_targets": 81,
+  "n_candidates_per_target": 49,
+  "candidate_cpub_valid_rate": 1.0,
+  "candidate_evading_fraction": 0.7178130511463845,
+  "targets_with_any_evading_edit": 1.0,
+  "release_fraud_rate": {
+    "unfiltered": 0.156,
+    "cap5": 0.05,
+    "independent": 0.0015
+  },
+  "honest_utility": {
+    "bank_real_rebalanced": {
+      "pr_auc": 0.8796566047852188,
+      "ci95": [
+        0.8231315108880661,
+        0.932581066168131
+      ]
+    },
+    "real_unweighted": {
+      "pr_auc": 0.32393038549062253,
+      "ci95": [
+        0.23651505297077163,
+        0.4258212564758768
+      ]
+    },
+    "real_10k_5pct": {
+      "pr_auc": 0.8682929460469992,
+      "ci95": [
+        0.8062394079753062,
+        0.9217869326204552
+      ]
+    },
+    "aux_real_ref": {
+      "pr_auc": 0.8207055854943135,
+      "ci95": [
+        0.7410557574010779,
+        0.8883638987728144
+      ]
+    },
+    "release_unfiltered": {
+      "pr_auc": 0.7881379706696714,
+      "ci95": [
+        0.7104453370340946,
+        0.8596752600331303
+      ]
+    },
+    "release_cap5": {
+      "pr_auc": 0.7237069974793726,
+      "ci95": [
+        0.6333635568781562,
+        0.8064022152138329
+      ]
+    },
+    "release_independent": {
+      "pr_auc": 0.0007682069083806488,
+      "ci95": [
+        0.000623539317016699,
+        0.0009656005678886961
+      ]
+    }
+  },
+  "honest_utility_diff": {
+    "cap5_minus_unfiltered": -0.06443097319029878,
+    "ci95": [
+      -0.10577784950797742,
+      -0.0313215203674216
+    ]
+  },
+  "surrogate_fidelity": {
+    "real_unweighted": {
+      "label_agreement_all": 0.9982133333333333,
+      "label_agreement_fraud": 0.6458333333333334,
+      "label_agreement_legit": 0.9986649578126668,
+      "cohen_kappa": 0.4313874790504476,
+      "recall_of_bank_alerts": 0.3333333333333333,
+      "surrogate_alert_rate": 0.0011066666666666666,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.7007728296066564,
+      "score_spearman_fraud": 0.3373557481308058
+    },
+    "real_10k_5pct": {
+      "label_agreement_all": 0.9990933333333334,
+      "label_agreement_fraud": 0.96875,
+      "label_agreement_legit": 0.9991322225782334,
+      "cohen_kappa": 0.7787665323215589,
+      "recall_of_bank_alerts": 0.7843137254901961,
+      "surrogate_alert_rate": 0.0020666666666666667,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.8873695264349137,
+      "score_spearman_fraud": 0.7141248270703815
+    },
+    "aux_real_ref": {
+      "label_agreement_all": 0.99872,
+      "label_agreement_fraud": 0.8854166666666666,
+      "label_agreement_legit": 0.9988652141407669,
+      "cohen_kappa": 0.6565071991797391,
+      "recall_of_bank_alerts": 0.6013071895424836,
+      "surrogate_alert_rate": 0.0016933333333333334,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.6429021548805022,
+      "score_spearman_fraud": 0.6175917853773111
+    },
+    "release_unfiltered": {
+      "label_agreement_all": 0.9767866666666667,
+      "label_agreement_fraud": 0.8854166666666666,
+      "label_agreement_legit": 0.976903770159137,
+      "cohen_kappa": 0.14291556553552132,
+      "recall_of_bank_alerts": 0.9738562091503268,
+      "surrogate_alert_rate": 0.025146666666666668,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.7152654116515297,
+      "score_spearman_fraud": 0.7401552122524356
+    },
+    "release_cap5": {
+      "label_agreement_all": 0.9932933333333334,
+      "label_agreement_fraud": 0.8958333333333334,
+      "label_agreement_legit": 0.9934182420164477,
+      "cohen_kappa": 0.3351200231288348,
+      "recall_of_bank_alerts": 0.8366013071895425,
+      "surrogate_alert_rate": 0.00808,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.7138653064273363,
+      "score_spearman_fraud": 0.7204863847843924
+    },
+    "release_independent": {
+      "label_agreement_all": 0.99796,
+      "label_agreement_fraud": 0.15625,
+      "label_agreement_legit": 0.9990387696251202,
+      "cohen_kappa": 0.0,
+      "recall_of_bank_alerts": 0.0,
+      "surrogate_alert_rate": 0.0,
+      "bank_alert_rate": 0.00204,
+      "score_spearman_all": 0.01815745766254092,
+      "score_spearman_fraud": -0.2663229484749862
+    }
+  },
+  "legacy_agreement": {
+    "unfiltered": {
+      "label_agreement_legacy": 0.7583333333333333,
+      "surrogate_alert_rate": 0.24210666666666666,
+      "legacy_bank_alert_rate": 0.0011066666666666666
+    },
+    "cap5": {
+      "label_agreement_legacy": 0.75952,
+      "surrogate_alert_rate": 0.24094666666666667,
+      "legacy_bank_alert_rate": 0.0011066666666666666
+    },
+    "independent": {
+      "label_agreement_legacy": 0.51868,
+      "surrogate_alert_rate": 0.48072,
+      "legacy_bank_alert_rate": 0.0011066666666666666
+    }
+  },
+  "transfer_evasion": {
+    "oracle_bank": {
+      "asr@1": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@5": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@20": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.3685185185185185,
+        "ci95": [
+          0.29814814814814816,
+          0.43766975308641975
+        ]
+      }
+    },
+    "aux_real_ref": {
+      "asr@1": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@5": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@20": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.28024691358024695,
+        "ci95": [
+          0.21234567901234572,
+          0.34816358024691363
+        ]
+      }
+    },
+    "release_unfiltered": {
+      "asr@1": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@5": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@20": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.2179012345679013,
+        "ci95": [
+          0.1703703703703704,
+          0.2666666666666667
+        ]
+      }
+    },
+    "release_cap5": {
+      "asr@1": {
+        "mean": 0.8888888888888888,
+        "ci95": [
+          0.8148148148148148,
+          0.9506172839506173
+        ]
+      },
+      "asr@5": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "asr@20": {
+        "mean": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.23765432098765438,
+        "ci95": [
+          0.18578703703703706,
+          0.2993981481481482
+        ]
+      }
+    },
+    "release_independent": {
+      "asr@1": {
+        "mean": 0.6790123456790124,
+        "ci95": [
+          0.5802469135802469,
+          0.7777777777777778
+        ]
+      },
+      "asr@5": {
+        "mean": 0.8148148148148148,
+        "ci95": [
+          0.7283950617283951,
+          0.8888888888888888
+        ]
+      },
+      "asr@20": {
+        "mean": 0.9629629629629629,
+        "ci95": [
+          0.9135802469135802,
+          1.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.46851851851851856,
+        "ci95": [
+          0.37280864197530866,
+          0.5518672839506173
+        ]
+      }
+    },
+    "public_only_random": {
+      "asr@1": {
+        "mean": 0.7154938271604944,
+        "ci95": [
+          0.6620308641975313,
+          0.7642592592592599
+        ]
+      },
+      "asr@5": {
+        "mean": 0.9545679012345685,
+        "ci95": [
+          0.9303070987654327,
+          0.977100308641976
+        ]
+      },
+      "asr@20": {
+        "mean": 0.9993209876543216,
+        "ci95": [
+          0.9985802469135808,
+          0.999876543209877
+        ]
+      },
+      "value@1": {
+        "mean": 0.35299999999999965,
+        "ci95": [
+          0.3153568672839503,
+          0.3871030864197527
+        ]
+      }
+    }
+  },
+  "transfer_evasion_paired": {
+    "release_cap5_minus_release_unfiltered": {
+      "asr@1": {
+        "mean": -0.1111111111111111,
+        "ci95": [
+          -0.18518518518518517,
+          -0.04938271604938271
+        ]
+      },
+      "asr@5": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "asr@20": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "value@1": {
+        "mean": 0.019753086419753093,
+        "ci95": [
+          -0.05185185185185186,
+          0.10004629629629627
+        ]
+      }
+    },
+    "release_cap5_minus_public_only_random": {
+      "asr@1": {
+        "mean": 0.17339506172839456,
+        "ci95": [
+          0.12450462962962912,
+          0.21926851851851797
+        ]
+      },
+      "asr@5": {
+        "mean": 0.04543209876543144,
+        "ci95": [
+          0.022469135802468475,
+          0.07154320987654256
+        ]
+      },
+      "asr@20": {
+        "mean": 0.0006790123456783386,
+        "ci95": [
+          0.00012345679012278803,
+          0.0014814814814808057
+        ]
+      },
+      "value@1": {
+        "mean": -0.11534567901234535,
+        "ci95": [
+          -0.1689479938271601,
+          -0.06129567901234543
+        ]
+      }
+    },
+    "release_cap5_minus_aux_real_ref": {
+      "asr@1": {
+        "mean": -0.1111111111111111,
+        "ci95": [
+          -0.18518518518518517,
+          -0.04938271604938271
+        ]
+      },
+      "asr@5": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "asr@20": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "value@1": {
+        "mean": -0.04259259259259259,
+        "ci95": [
+          -0.11050925925925925,
+          0.021018518518518495
+        ]
+      }
+    }
+  }
+}

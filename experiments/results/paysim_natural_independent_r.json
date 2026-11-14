@@ -1,0 +1,119 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "min_margin": 0.15,
+      "n_val_candidates": 6,
+      "lambda_ua": 1.0,
+      "elite_mult": 4.0,
+      "c_pub": true
+    }
+  },
+  "run": {
+    "utc": "20260829T103827Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 13,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0013,
+  "c_pub": {
+    "enabled": true,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9987,
+      "typology_cash_out": 11,
+      "typology_transfer": 2
+    },
+    "uncertified_fraud": 0
+  },
+  "r": {
+    "enabled": true,
+    "c_pub": true,
+    "n_pool": 120000,
+    "n_release": 10000,
+    "n_release_fraud": 13,
+    "target_fraud_rate": 0.001292,
+    "train_fraud_rate": 0.001292,
+    "min_margin": 0.15,
+    "lambda_ua": 1.0,
+    "n_val_candidates": 6,
+    "n_margin_kept": 119957,
+    "n_elite": 40000,
+    "mean_u_h_row": 0.9122630776291615,
+    "mean_u_a_row": 0.004770976382864539,
+    "mean_margin_pool": 0.4976145118085677,
+    "mean_margin_release": 0.49960592160505585,
+    "val_pr_auc_selected": 0.0017094335627730046,
+    "c_pub_stats": {
+      "n_drawn": 240000,
+      "n_kept": 120000,
+      "reject_rate": 0.0008416666666666295,
+      "certificate_coverage": {
+        "legit": 119935,
+        "typology_cash_out": 53,
+        "typology_transfer": 12
+      },
+      "uncertified_fraud": 0
+    },
+    "note": "C_priv is the train-fitted bank detector; val is the U_h probe. Neither ships. Row U_a is boundary proximity; table U_h is PR-AUC on val."
+  },
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 7.980207999999999,
+      "amount": 92251.46634967881,
+      "oldbalanceOrg": 354055.6432415603,
+      "newbalanceOrig": 192165.87790220015,
+      "oldbalanceDest": 144988.25251168213,
+      "newbalanceDest": 77569.16573148337
+    },
+    "total_variation": {
+      "type": 0.332392
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.0018664108110937505,
+    "recall_at_1pct_fpr": 0.0,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49927613014000005,
+    "mean_nn_distance_members": 0.4699030523052289,
+    "mean_nn_distance_nonmembers": 0.46555869280647655,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.6688133333333334,
+    "public_evasion_asr": 0.2916666666666667,
+    "surrogate_evasion_asr": 0.7291666666666666,
+    "mean_abs_margin_on_test": 0.4990691516918743,
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation."
+  }
+}

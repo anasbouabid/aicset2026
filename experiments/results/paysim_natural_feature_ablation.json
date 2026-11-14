@@ -1,0 +1,105 @@
+{
+  "run": {
+    "utc": "20260830T120418Z",
+    "python": "3.11.16"
+  },
+  "protocol": "natural",
+  "n_rows": 500000,
+  "seed": 0,
+  "n_test_fraud": 96,
+  "full_bank_pr_auc": 0.32393038549062253,
+  "slices": [
+    {
+      "slice": "full",
+      "features": [
+        "step",
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "oldbalanceDest",
+        "newbalanceDest",
+        "type"
+      ],
+      "pr_auc": 0.32393038549062253,
+      "agreement_with_full_bank": 1.0
+    },
+    {
+      "slice": "origin",
+      "features": [
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "type"
+      ],
+      "pr_auc": 0.4750546853523103,
+      "agreement_with_full_bank": 0.9988933333333333
+    },
+    {
+      "slice": "no_dest",
+      "features": [
+        "step",
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "type"
+      ],
+      "pr_auc": 0.37784277695801377,
+      "agreement_with_full_bank": 0.99872
+    },
+    {
+      "slice": "type_amount",
+      "features": [
+        "amount",
+        "type"
+      ],
+      "pr_auc": 0.012396279763442227,
+      "agreement_with_full_bank": 0.9988933333333333
+    },
+    {
+      "slice": "dest",
+      "features": [
+        "oldbalanceDest",
+        "newbalanceDest",
+        "type"
+      ],
+      "pr_auc": 0.5138800524194993,
+      "agreement_with_full_bank": 0.9989333333333333
+    },
+    {
+      "slice": "step_type_amount",
+      "features": [
+        "step",
+        "amount",
+        "type"
+      ],
+      "pr_auc": 0.23070481417499739,
+      "agreement_with_full_bank": 0.9989066666666667
+    },
+    {
+      "slice": "public_empty_origin_rule",
+      "features": [
+        "type",
+        "amount",
+        "oldbalanceOrg",
+        "newbalanceOrig"
+      ],
+      "pr_auc": 0.9583866666666667,
+      "agreement_with_full_bank": 0.9988133333333333,
+      "tp": 92,
+      "fp": 0,
+      "fn": 4,
+      "tn": 74904,
+      "precision": 1.0,
+      "recall": 0.9583333333333334
+    }
+  ],
+  "physics": {
+    "n_table": 500000,
+    "n_fraud": 645,
+    "fraud_empty_origin": 0.9891472868217054,
+    "fraud_oldbalance_eq_amount": 0.9875968992248062,
+    "fraud_public_identity": 0.986046511627907,
+    "legit_public_identity": 0.0
+  },
+  "note": "Real train/test only; no synthesizer. 0.5-threshold agreement is near 1.0 because both the bank HGB and most slices predict almost all negatives at this prevalence; use PR-AUC and the rule confusion matrix instead."
+}

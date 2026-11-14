@@ -1,0 +1,25 @@
+seed: 0
+dataset: ieee_cis
+ieee_cis:
+  path: ../data/raw/ieee_cis
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: independent_classcond_counthist
+n_synth: 10000
+r_filter: true
+r:
+  pool_mult: 12
+  min_margin: 0.15
+  lambda_ua: 1.0
+  c_pub: true
+# 8-bin quantile histogram on counts × ProductCD given y; uniform inside bins.
+output_unfiltered: results/ieee_cis_natural_ind_counthist_unfiltered.json
+r_outputs:
+  - rate: 0.05
+    controllers:
+      rate_only: results/ieee_cis_natural_ind_counthist_r05_rateonly.json

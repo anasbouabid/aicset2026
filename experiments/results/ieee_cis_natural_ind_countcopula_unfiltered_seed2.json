@@ -1,0 +1,189 @@
+{
+  "config": {
+    "seed": 2,
+    "dataset": "ieee_cis",
+    "ieee_cis": {
+      "path": "../data/raw/ieee_cis",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent_classcond_countcopula",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    },
+    "r_outputs": [
+      {
+        "rate": 0.05,
+        "controllers": {
+          "rate_only": "results/ieee_cis_natural_ind_countcopula_r05_rateonly_seed2.json"
+        }
+      }
+    ]
+  },
+  "run": {
+    "utc": "20260831T122958Z",
+    "python": "3.11.16"
+  },
+  "dataset": "ieee_cis",
+  "n_rows": 500000,
+  "n_fraud": 17495,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 330,
+  "fraud_rate": 0.03499,
+  "synth_fraud_rate": 0.033,
+  "release_schema": {
+    "numeric": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320"
+    ],
+    "categorical": [
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "label": "isFraud"
+  },
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9670,
+      "typology_product_C": 111,
+      "typology_product_R": 25,
+      "typology_product_W": 154,
+      "typology_product_H": 32,
+      "typology_product_S": 8
+    },
+    "uncertified_fraud": 0
+  },
+  "r": null,
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "TransactionAmt": 3.735599772000111,
+      "TransactionDT": 53171.568364000006,
+      "C1": 1.1785665826461702,
+      "C2": 1.403336552417365,
+      "C13": 1.9813177453098123,
+      "D1": 0.9608679999999999,
+      "V307": 81.44446258538285,
+      "V310": 4.168203788298567,
+      "V314": 3.1501507540857037,
+      "V317": 25.650725053487314,
+      "V320": 6.305412583272142
+    },
+    "total_variation": {
+      "ProductCD": 0.01116399999999999,
+      "card4": 0.0033359999999999536,
+      "card6": 0.001604000000000012,
+      "P_emaildomain": 0.014336000000000026,
+      "DeviceType": 0.005951999999999985
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.29948291281446016,
+    "recall_at_1pct_fpr": 0.2625762195121951,
+    "n_test": 75000,
+    "n_test_fraud": 2624
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49939791261999994,
+    "mean_nn_distance_members": 0.8411750947698704,
+    "mean_nn_distance_nonmembers": 0.836652886291516,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.7306266666666666,
+    "public_evasion_asr": 0.19016768292682926,
+    "surrogate_evasion_asr": 0.06707317073170732,
+    "mean_abs_margin_on_test": 0.4715959658275767,
+    "release_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "bank_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation. If release_feature_cols is a subset of bank_feature_cols, the surrogate is the T1 adversary who only has the released columns."
+  },
+  "honest_utility_slices": {
+    "counts": {
+      "pr_auc": 0.32899005008798393,
+      "recall_at_1pct_fpr": 0.2926829268292683,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 4
+    },
+    "no_counts": {
+      "pr_auc": 0.11683281759898022,
+      "recall_at_1pct_fpr": 0.0625,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 13
+    },
+    "public": {
+      "pr_auc": 0.1150482503396525,
+      "recall_at_1pct_fpr": 0.08460365853658537,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 7
+    }
+  }
+}

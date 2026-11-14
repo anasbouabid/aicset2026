@@ -1,0 +1,192 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "ieee_cis",
+    "ieee_cis": {
+      "path": "../data/raw/ieee_cis",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent_classcond_countcopula",
+    "synth": {
+      "corr_keep": 0.75
+    },
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    },
+    "r_outputs": [
+      {
+        "rate": 0.05,
+        "controllers": {
+          "rate_only": "results/ieee_cis_natural_ind_countcopula_c075_r05_rateonly.json"
+        }
+      }
+    ]
+  },
+  "run": {
+    "utc": "20260830T171547Z",
+    "python": "3.11.16"
+  },
+  "dataset": "ieee_cis",
+  "n_rows": 500000,
+  "n_fraud": 17495,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 379,
+  "fraud_rate": 0.03499,
+  "synth_fraud_rate": 0.0379,
+  "release_schema": {
+    "numeric": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320"
+    ],
+    "categorical": [
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "label": "isFraud"
+  },
+  "c_pub": {
+    "enabled": false,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9621,
+      "typology_product_C": 151,
+      "typology_product_W": 156,
+      "typology_product_R": 30,
+      "typology_product_H": 28,
+      "typology_product_S": 14
+    },
+    "uncertified_fraud": 0
+  },
+  "r": null,
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "TransactionAmt": 3.6869920759999695,
+      "TransactionDT": 47372.857295999966,
+      "C1": 0.5930742640776435,
+      "C2": 2.2432335125301295,
+      "C13": 1.9863699397303947,
+      "D1": 1.444084000000002,
+      "V307": 39.1754542702533,
+      "V310": 3.7219753247656797,
+      "V314": 2.2421368533761488,
+      "V317": 30.74139290397991,
+      "V320": 7.489543839536158
+    },
+    "total_variation": {
+      "ProductCD": 0.005631999999999991,
+      "card4": 0.002204000000000008,
+      "card6": 0.006255999999999977,
+      "P_emaildomain": 0.012448,
+      "DeviceType": 0.0013480000000000228
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.2844019581963067,
+    "recall_at_1pct_fpr": 0.2423780487804878,
+    "n_test": 75000,
+    "n_test_fraud": 2624
+  },
+  "privacy": {
+    "mia_distance_auc": 0.50059485416,
+    "mean_nn_distance_members": 0.866715937649563,
+    "mean_nn_distance_nonmembers": 0.8741923665014847,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.7419066666666667,
+    "public_evasion_asr": 0.15853658536585366,
+    "surrogate_evasion_asr": 0.08765243902439024,
+    "mean_abs_margin_on_test": 0.47199020312050777,
+    "release_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "bank_feature_cols": [
+      "TransactionAmt",
+      "TransactionDT",
+      "C1",
+      "C2",
+      "C13",
+      "D1",
+      "V307",
+      "V310",
+      "V314",
+      "V317",
+      "V320",
+      "ProductCD",
+      "card4",
+      "card6",
+      "P_emaildomain",
+      "DeviceType"
+    ],
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation. If release_feature_cols is a subset of bank_feature_cols, the surrogate is the T1 adversary who only has the released columns."
+  },
+  "honest_utility_slices": {
+    "counts": {
+      "pr_auc": 0.3323701235740223,
+      "recall_at_1pct_fpr": 0.3052591463414634,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 4
+    },
+    "no_counts": {
+      "pr_auc": 0.109283972987796,
+      "recall_at_1pct_fpr": 0.040396341463414635,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 13
+    },
+    "public": {
+      "pr_auc": 0.09465119558990728,
+      "recall_at_1pct_fpr": 0.04420731707317073,
+      "n_test": 75000,
+      "n_test_fraud": 2624,
+      "n_features": 7
+    }
+  }
+}

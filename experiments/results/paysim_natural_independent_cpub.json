@@ -1,0 +1,78 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent",
+    "n_synth": 10000,
+    "c_pub_filter": true
+  },
+  "run": {
+    "utc": "20260829T085947Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 6,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0006,
+  "c_pub": {
+    "enabled": true,
+    "n_drawn": 20000,
+    "n_kept": 10000,
+    "reject_rate": 0.0009000000000000119,
+    "certificate_coverage": {
+      "legit": 9994,
+      "typology_cash_out": 4,
+      "typology_transfer": 2
+    },
+    "uncertified_fraud": 0
+  },
+  "fidelity": {
+    "wasserstein1": {
+      "step": 2.2381680000000035,
+      "amount": 10406.613376760388,
+      "oldbalanceOrg": 24694.89942440007,
+      "newbalanceOrig": 35938.09205060003,
+      "oldbalanceDest": 57597.159094840026,
+      "newbalanceDest": 62999.630630351545
+    },
+    "total_variation": {
+      "type": 0.0021159999999999972
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.0052112740111082455,
+    "recall_at_1pct_fpr": 0.125,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49893985684000003,
+    "mean_nn_distance_members": 0.3333374675751585,
+    "mean_nn_distance_nonmembers": 0.3286158572227013,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.93832,
+    "public_evasion_asr": 0.2916666666666667,
+    "mean_abs_margin_on_test": 0.4990691516918743
+  }
+}

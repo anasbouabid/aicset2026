@@ -1,0 +1,1065 @@
+{
+  "protocol": "ieee_cis_c3_reconsyn_sampleattack",
+  "status": "T2 lab-only SampleAttack (query G). Not SearchAttack. Not the T1 product. Do not overwrite c4/c3_mia/c3_recon JSON.",
+  "seed": 0,
+  "epochs": 50,
+  "budgets": [
+    10000,
+    50000,
+    100000,
+    250000
+  ],
+  "n_outliers": 200,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_train_fraud": 8748,
+  "n_ref_fraud": 3499,
+  "cite": "ganev2025inadequacy",
+  "arms": [
+    {
+      "name": "identity_n10000",
+      "n_synth": 10000,
+      "n_synth_fraud": 379,
+      "synth_fraud_rate": 0.0379,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 10000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.039192,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.039192,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0352,
+            "recall_ref": 0.0,
+            "advantage": 0.0352,
+            "recall_train_fraud": 0.03760859625057156,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.03760859625057156
+          },
+          "eps_0.001": {
+            "recall_train": 0.0403,
+            "recall_ref": 0.00104,
+            "advantage": 0.03926,
+            "recall_train_fraud": 0.04218106995884774,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.04218106995884774
+          },
+          "eps_0.01": {
+            "recall_train": 0.04968,
+            "recall_ref": 0.01073,
+            "advantage": 0.03895,
+            "recall_train_fraud": 0.04755372656607224,
+            "recall_ref_fraud": 0.005144326950557302,
+            "advantage_fraud": 0.04240939961551494
+          },
+          "eps_0.05": {
+            "recall_train": 0.144444,
+            "recall_ref": 0.11045,
+            "advantage": 0.03399399999999998,
+            "recall_train_fraud": 0.09419295839048926,
+            "recall_ref_fraud": 0.056587596456130325,
+            "advantage_fraud": 0.037605361934358934
+          },
+          "eps_0.1": {
+            "recall_train": 0.236904,
+            "recall_ref": 0.20612,
+            "advantage": 0.030784000000000006,
+            "recall_train_fraud": 0.17203932327389118,
+            "recall_ref_fraud": 0.1394684195484424,
+            "advantage_fraud": 0.03257090372544877
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.04218106995884774,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.04218106995884774
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 0.9304773434270729,
+        "mean_nn_ref_outliers": 1.2669126957555132,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.035,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.035
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.045,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.045
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.045,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.045
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.08,
+            "recall_ref_outliers": 0.035,
+            "advantage_outliers": 0.045
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.135,
+            "recall_ref_outliers": 0.065,
+            "advantage_outliers": 0.07
+          }
+        }
+      }
+    },
+    {
+      "name": "identity_n50000",
+      "n_synth": 50000,
+      "n_synth_fraud": 1787,
+      "synth_fraud_rate": 0.03574,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 50000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.147636,
+        "exact_match_rate_ref": 1e-05,
+        "exact_match_advantage": 0.14762599999999998,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.131744,
+            "recall_ref": 1e-05,
+            "advantage": 0.131734,
+            "recall_train_fraud": 0.1289437585733882,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.1289437585733882
+          },
+          "eps_0.001": {
+            "recall_train": 0.151276,
+            "recall_ref": 0.00415,
+            "advantage": 0.147126,
+            "recall_train_fraud": 0.14791952446273435,
+            "recall_ref_fraud": 0.0008573878250928837,
+            "advantage_fraud": 0.14706213663764148
+          },
+          "eps_0.01": {
+            "recall_train": 0.176516,
+            "recall_ref": 0.03399,
+            "advantage": 0.142526,
+            "recall_train_fraud": 0.16540923639689073,
+            "recall_ref_fraud": 0.01886253215204344,
+            "advantage_fraud": 0.14654670424484728
+          },
+          "eps_0.05": {
+            "recall_train": 0.313656,
+            "recall_ref": 0.19451,
+            "advantage": 0.119146,
+            "recall_train_fraud": 0.26394604481024236,
+            "recall_ref_fraud": 0.14318376679051156,
+            "advantage_fraud": 0.1207622780197308
+          },
+          "eps_0.1": {
+            "recall_train": 0.41318,
+            "recall_ref": 0.31042,
+            "advantage": 0.10276000000000002,
+            "recall_train_fraud": 0.37551440329218105,
+            "recall_ref_fraud": 0.2655044298370963,
+            "advantage_fraud": 0.11000997345508473
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.1468907178783722,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.1468907178783722
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 0.3225956077991449,
+        "mean_nn_ref_outliers": 0.5041934143915201,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.085,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.085
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.12,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.12
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.12,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.12
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.195,
+            "recall_ref_outliers": 0.09,
+            "advantage_outliers": 0.10500000000000001
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.305,
+            "recall_ref_outliers": 0.165,
+            "advantage_outliers": 0.13999999999999999
+          }
+        }
+      }
+    },
+    {
+      "name": "identity_n100000",
+      "n_synth": 100000,
+      "n_synth_fraud": 3538,
+      "synth_fraud_rate": 0.03538,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 100000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.181048,
+        "exact_match_rate_ref": 1e-05,
+        "exact_match_advantage": 0.18103799999999998,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.161788,
+            "recall_ref": 1e-05,
+            "advantage": 0.16177799999999998,
+            "recall_train_fraud": 0.15706447187928668,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.15706447187928668
+          },
+          "eps_0.001": {
+            "recall_train": 0.185216,
+            "recall_ref": 0.00498,
+            "advantage": 0.18023599999999998,
+            "recall_train_fraud": 0.17912665752171925,
+            "recall_ref_fraud": 0.0011431837667905116,
+            "advantage_fraud": 0.17798347375492873
+          },
+          "eps_0.01": {
+            "recall_train": 0.213304,
+            "recall_ref": 0.03939,
+            "advantage": 0.17391399999999999,
+            "recall_train_fraud": 0.19890260631001372,
+            "recall_ref_fraud": 0.024864246927693626,
+            "advantage_fraud": 0.1740383593823201
+          },
+          "eps_0.05": {
+            "recall_train": 0.35318,
+            "recall_ref": 0.20984,
+            "advantage": 0.14334,
+            "recall_train_fraud": 0.306241426611797,
+            "recall_ref_fraud": 0.1609031151757645,
+            "advantage_fraud": 0.14533831143603249
+          },
+          "eps_0.1": {
+            "recall_train": 0.451008,
+            "recall_ref": 0.32958,
+            "advantage": 0.12142800000000004,
+            "recall_train_fraud": 0.4200960219478738,
+            "recall_ref_fraud": 0.29036867676478995,
+            "advantage_fraud": 0.12972734518308388
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.1779835390946502,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.1779835390946502
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 0.28152159039713187,
+        "mean_nn_ref_outliers": 0.449328274129786,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.12,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.12
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.15,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.15
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.15,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.15
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.235,
+            "recall_ref_outliers": 0.095,
+            "advantage_outliers": 0.13999999999999999
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.36,
+            "recall_ref_outliers": 0.18,
+            "advantage_outliers": 0.18
+          }
+        }
+      }
+    },
+    {
+      "name": "identity_n250000",
+      "n_synth": 250000,
+      "n_synth_fraud": 8709,
+      "synth_fraud_rate": 0.034836,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 250000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.451136,
+        "exact_match_rate_ref": 2e-05,
+        "exact_match_advantage": 0.45111599999999996,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.403588,
+            "recall_ref": 2e-05,
+            "advantage": 0.403568,
+            "recall_train_fraud": 0.3904892546867855,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.3904892546867855
+          },
+          "eps_0.001": {
+            "recall_train": 0.457632,
+            "recall_ref": 0.01224,
+            "advantage": 0.445392,
+            "recall_train_fraud": 0.44684499314128945,
+            "recall_ref_fraud": 0.002857959416976279,
+            "advantage_fraud": 0.4439870337243132
+          },
+          "eps_0.01": {
+            "recall_train": 0.490996,
+            "recall_ref": 0.07358,
+            "advantage": 0.417416,
+            "recall_train_fraud": 0.47336534064929126,
+            "recall_ref_fraud": 0.05401543298085167,
+            "advantage_fraud": 0.4193499076684396
+          },
+          "eps_0.05": {
+            "recall_train": 0.605492,
+            "recall_ref": 0.28109,
+            "advantage": 0.324402,
+            "recall_train_fraud": 0.5853909465020576,
+            "recall_ref_fraud": 0.25435838811088884,
+            "advantage_fraud": 0.33103255839116874
+          },
+          "eps_0.1": {
+            "recall_train": 0.68066,
+            "recall_ref": 0.41773,
+            "advantage": 0.26293000000000005,
+            "recall_train_fraud": 0.6652949245541838,
+            "recall_ref_fraud": 0.4004001143183767,
+            "advantage_fraud": 0.26489481023580713
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.4447873799725652,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.4447873799725652
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 0.06467945169714288,
+        "mean_nn_ref_outliers": 0.17022977282613255,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.35,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.35
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.44,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.44
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.44,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.44
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.615,
+            "recall_ref_outliers": 0.315,
+            "advantage_outliers": 0.3
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.79,
+            "recall_ref_outliers": 0.555,
+            "advantage_outliers": 0.235
+          }
+        }
+      }
+    },
+    {
+      "name": "independent_n10000",
+      "n_synth": 10000,
+      "n_synth_fraud": 346,
+      "synth_fraud_rate": 0.0346,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 10000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 3e-05,
+            "advantage": -3e-05,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.000312,
+            "recall_ref": 0.00032,
+            "advantage": -8.000000000000032e-06,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.05": {
+            "recall_train": 0.020248,
+            "recall_ref": 0.02,
+            "advantage": 0.0002479999999999982,
+            "recall_train_fraud": 0.005715592135345221,
+            "recall_ref_fraud": 0.00400114318376679,
+            "advantage_fraud": 0.001714448951578431
+          },
+          "eps_0.1": {
+            "recall_train": 0.082976,
+            "recall_ref": 0.08166,
+            "advantage": 0.0013159999999999977,
+            "recall_train_fraud": 0.02526291723822588,
+            "recall_ref_fraud": 0.026864818519577022,
+            "advantage_fraud": -0.001601901281351143
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 32.65507012667569,
+        "mean_nn_ref_outliers": 24.503521229101207,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "independent_n250000",
+      "n_synth": 250000,
+      "n_synth_fraud": 8816,
+      "synth_fraud_rate": 0.035264,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 250000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.000248,
+            "recall_ref": 0.00026,
+            "advantage": -1.1999999999999966e-05,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.00736,
+            "recall_ref": 0.00729,
+            "advantage": 7.000000000000062e-05,
+            "recall_train_fraud": 0.0019433013260173753,
+            "recall_ref_fraud": 0.003143755358673907,
+            "advantage_fraud": -0.0012004540326565314
+          },
+          "eps_0.05": {
+            "recall_train": 0.141908,
+            "recall_ref": 0.14163,
+            "advantage": 0.00027800000000000047,
+            "recall_train_fraud": 0.04938271604938271,
+            "recall_ref_fraud": 0.05315804515575879,
+            "advantage_fraud": -0.0037753291063760755
+          },
+          "eps_0.1": {
+            "recall_train": 0.243576,
+            "recall_ref": 0.24297,
+            "advantage": 0.0006059999999999954,
+            "recall_train_fraud": 0.1211705532693187,
+            "recall_ref_fraud": 0.12946556158902545,
+            "advantage_fraud": -0.00829500831970674
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 28.71761399438744,
+        "mean_nn_ref_outliers": 21.273558428646744,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "t1_ctgan_r05_rateonly_cache",
+      "n_synth": 10000,
+      "n_synth_fraud": 500,
+      "synth_fraud_rate": 0.05,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 10000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.001304,
+            "recall_ref": 0.00136,
+            "advantage": -5.600000000000006e-05,
+            "recall_train_fraud": 0.0004572473708276177,
+            "recall_ref_fraud": 0.0005715918833952558,
+            "advantage_fraud": -0.00011434451256763807
+          },
+          "eps_0.05": {
+            "recall_train": 0.041716,
+            "recall_ref": 0.04348,
+            "advantage": -0.0017639999999999947,
+            "recall_train_fraud": 0.024119798811156837,
+            "recall_ref_fraud": 0.023721063160903114,
+            "advantage_fraud": 0.00039873565025372315
+          },
+          "eps_0.1": {
+            "recall_train": 0.11912,
+            "recall_ref": 0.1198,
+            "advantage": -0.00068,
+            "recall_train_fraud": 0.08058984910836763,
+            "recall_ref_fraud": 0.086024578450986,
+            "advantage_fraud": -0.005434729342618377
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 37.72200465979133,
+        "mean_nn_ref_outliers": 26.538513903219712,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "ctgan_n10000",
+      "n_synth": 10000,
+      "n_synth_fraud": 1078,
+      "synth_fraud_rate": 0.1078,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 10000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.001784,
+            "recall_ref": 0.00197,
+            "advantage": -0.00018599999999999997,
+            "recall_train_fraud": 0.000800182898948331,
+            "recall_ref_fraud": 0.0011431837667905116,
+            "advantage_fraud": -0.0003430008678421806
+          },
+          "eps_0.05": {
+            "recall_train": 0.050404,
+            "recall_ref": 0.05065,
+            "advantage": -0.00024600000000000316,
+            "recall_train_fraud": 0.023205304069501602,
+            "recall_ref_fraud": 0.02286367533581023,
+            "advantage_fraud": 0.0003416287336913716
+          },
+          "eps_0.1": {
+            "recall_train": 0.139112,
+            "recall_ref": 0.13894,
+            "advantage": 0.00017200000000000548,
+            "recall_train_fraud": 0.09556470050297211,
+            "recall_ref_fraud": 0.09174049728493855,
+            "advantage_fraud": 0.0038242032180335617
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 37.68495493595477,
+        "mean_nn_ref_outliers": 26.63365458331345,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "ctgan_n50000",
+      "n_synth": 50000,
+      "n_synth_fraud": 5421,
+      "synth_fraud_rate": 0.10842,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 50000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.007428,
+            "recall_ref": 0.00769,
+            "advantage": -0.0002620000000000001,
+            "recall_train_fraud": 0.0024005486968449933,
+            "recall_ref_fraud": 0.002572163475278651,
+            "advantage_fraud": -0.00017161477843365787
+          },
+          "eps_0.05": {
+            "recall_train": 0.117804,
+            "recall_ref": 0.11774,
+            "advantage": 6.40000000000085e-05,
+            "recall_train_fraud": 0.06915866483767719,
+            "recall_ref_fraud": 0.06801943412403544,
+            "advantage_fraud": 0.0011392307136417479
+          },
+          "eps_0.1": {
+            "recall_train": 0.247792,
+            "recall_ref": 0.2473,
+            "advantage": 0.0004920000000000202,
+            "recall_train_fraud": 0.1881572930955647,
+            "recall_ref_fraud": 0.18376679051157474,
+            "advantage_fraud": 0.004390502583989958
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 37.47643129267749,
+        "mean_nn_ref_outliers": 26.176004253288465,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "ctgan_n100000",
+      "n_synth": 100000,
+      "n_synth_fraud": 10971,
+      "synth_fraud_rate": 0.10971,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 100000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.013396,
+            "recall_ref": 0.01382,
+            "advantage": -0.00042400000000000077,
+            "recall_train_fraud": 0.004000914494741655,
+            "recall_ref_fraud": 0.004286939125464418,
+            "advantage_fraud": -0.00028602463072276325
+          },
+          "eps_0.05": {
+            "recall_train": 0.154292,
+            "recall_ref": 0.15376,
+            "advantage": 0.0005320000000000047,
+            "recall_train_fraud": 0.09419295839048926,
+            "recall_ref_fraud": 0.09288368105172906,
+            "advantage_fraud": 0.001309277338760198
+          },
+          "eps_0.1": {
+            "recall_train": 0.292164,
+            "recall_ref": 0.29131,
+            "advantage": 0.0008539999999999659,
+            "recall_train_fraud": 0.2291952446273434,
+            "recall_ref_fraud": 0.2214918548156616,
+            "advantage_fraud": 0.007703389811681782
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 37.47643129267749,
+        "mean_nn_ref_outliers": 26.176004253288465,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    },
+    {
+      "name": "ctgan_n250000",
+      "n_synth": 250000,
+      "n_synth_fraud": 27525,
+      "synth_fraud_rate": 0.1101,
+      "reconstruction": {
+        "n_train": 250000,
+        "n_ref": 100000,
+        "n_synth": 250000,
+        "n_train_fraud": 8748,
+        "n_ref_fraud": 3499,
+        "numeric_decimals": 4,
+        "exact_match_rate_train": 0.0,
+        "exact_match_rate_ref": 0.0,
+        "exact_match_advantage": 0.0,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.001": {
+            "recall_train": 0.0,
+            "recall_ref": 0.0,
+            "advantage": 0.0,
+            "recall_train_fraud": 0.0,
+            "recall_ref_fraud": 0.0,
+            "advantage_fraud": 0.0
+          },
+          "eps_0.01": {
+            "recall_train": 0.026852,
+            "recall_ref": 0.02767,
+            "advantage": -0.0008179999999999993,
+            "recall_train_fraud": 0.0074302697759487885,
+            "recall_ref_fraud": 0.007430694484138326,
+            "advantage_fraud": -4.2470818953713185e-07
+          },
+          "eps_0.05": {
+            "recall_train": 0.203912,
+            "recall_ref": 0.20398,
+            "advantage": -6.799999999998474e-05,
+            "recall_train_fraud": 0.13477366255144033,
+            "recall_ref_fraud": 0.13546727636467562,
+            "advantage_fraud": -0.0006936138132352943
+          },
+          "eps_0.1": {
+            "recall_train": 0.349232,
+            "recall_ref": 0.34875,
+            "advantage": 0.00048199999999998244,
+            "recall_train_fraud": 0.28177869227251945,
+            "recall_ref_fraud": 0.2760788796799085,
+            "advantage_fraud": 0.005699812592610931
+          }
+        },
+        "note": "Attack uses only the released table. Ref scores specificity, not an auxiliary attack dataset. Not ReconSyn.",
+        "exact_match_rate_train_fraud": 0.0,
+        "exact_match_rate_ref_fraud": 0.0,
+        "exact_match_advantage_fraud": 0.0
+      },
+      "outliers": {
+        "n_outliers": 200,
+        "mean_nn_train_outliers": 37.47643129267749,
+        "mean_nn_ref_outliers": 26.175608962312864,
+        "nn_recall": {
+          "eps_0.0": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.001": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.01": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.05": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          },
+          "eps_0.1": {
+            "recall_train_outliers": 0.0,
+            "recall_ref_outliers": 0.0,
+            "advantage_outliers": 0.0
+          }
+        }
+      }
+    }
+  ]
+}

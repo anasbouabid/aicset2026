@@ -1,0 +1,12 @@
+seed: 0
+dataset: toy
+n_rows: 4000
+fraud_rate: 0.08
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: independent
+n_synth: 2000
+output: results/smoke.json

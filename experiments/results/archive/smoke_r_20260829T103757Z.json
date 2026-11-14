@@ -1,0 +1,112 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "toy",
+    "n_rows": 4000,
+    "fraud_rate": 0.08,
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent",
+    "n_synth": 2000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 4,
+      "min_margin": 0.05,
+      "n_val_candidates": 3,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    }
+  },
+  "run": {
+    "utc": "20260829T103757Z",
+    "python": "3.11.16"
+  },
+  "dataset": "toy",
+  "n_rows": 4000,
+  "n_fraud": 320,
+  "n_train": 2000,
+  "n_ref": 800,
+  "n_val": 600,
+  "n_test": 600,
+  "n_synth": 2000,
+  "n_synth_fraud": 160,
+  "fraud_rate": 0.08,
+  "synth_fraud_rate": 0.08,
+  "c_pub": {
+    "enabled": true,
+    "n_kept": 2000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 1840,
+      "fraud": 160
+    },
+    "uncertified_fraud": 0
+  },
+  "r": {
+    "enabled": true,
+    "c_pub": true,
+    "n_pool": 8000,
+    "n_release": 2000,
+    "n_release_fraud": 160,
+    "target_fraud_rate": 0.08,
+    "train_fraud_rate": 0.08,
+    "min_margin": 0.05,
+    "lambda_ua": 1.0,
+    "n_val_candidates": 3,
+    "n_margin_kept": 8000,
+    "n_elite": 8000,
+    "mean_u_h_row": 0.8557396319935171,
+    "mean_u_a_row": 0.001585092722458538,
+    "mean_margin_pool": 0.4992074536387708,
+    "mean_margin_release": 0.49924421216103326,
+    "val_pr_auc_selected": 0.17337904606005555,
+    "c_pub_stats": {
+      "n_drawn": 16000,
+      "n_kept": 8000,
+      "reject_rate": 0.018124999999999947,
+      "certificate_coverage": {
+        "legit": 7360,
+        "fraud": 640
+      },
+      "uncertified_fraud": 0
+    },
+    "note": "C_priv is the train-fitted bank detector; val is the U_h probe. Neither ships. Row U_a is boundary proximity; table U_h is PR-AUC on val."
+  },
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "amount": 3.5235030412950996,
+      "hour": 0.13350000000000012,
+      "n_tx_24h": 0.10949999999999963
+    },
+    "total_variation": {
+      "merchant_cat": 0.015999999999999993,
+      "country": 0.013000000000000008,
+      "channel": 0.03849999999999999
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.09608514445292479,
+    "recall_at_1pct_fpr": 0.041666666666666664,
+    "n_test": 600,
+    "n_test_fraud": 48
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49968,
+    "mean_nn_distance_members": 0.42927939224655043,
+    "mean_nn_distance_nonmembers": 0.428391040207213,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.5883333333333334,
+    "public_evasion_asr": 1.0,
+    "surrogate_evasion_asr": 0.0625,
+    "mean_abs_margin_on_test": 0.4999475312671334,
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation."
+  }
+}

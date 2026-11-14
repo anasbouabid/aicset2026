@@ -1,0 +1,37 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: findiff
+synth:
+  n_iter: 10000
+  num_timesteps: 500
+  batch_size: 1024
+  sample_batch: 4096
+  lr: 0.0001
+  cat_emb_dim: 2
+  time_dim: 64
+  hidden_dim: 1024
+  num_blocks: 4
+n_synth: 10000
+r_filter: true
+r:
+  pool_mult: 12
+  min_margin: 0.15
+  lambda_ua: 1.0
+  c_pub: true
+# FinDiff (Sattarov et al., ICAIF 2023) on the same PaySim 500k T1 protocol.
+# U_h backbone comparison, not a U_a experiment. Do not overwrite CTGAN/TVAE/TabDDPM JSON.
+# Matched step budget with TabDDPM (10k steps); T=500 linear as in the paper, not 3000 epochs.
+output_unfiltered: results/paysim_natural_findiff_unfiltered.json
+r_outputs:
+  - rate: 0.05
+    controllers:
+      rate_only: results/paysim_natural_findiff_r05_rateonly.json

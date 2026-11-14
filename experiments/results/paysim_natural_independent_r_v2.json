@@ -1,0 +1,119 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "independent",
+    "n_synth": 10000,
+    "r_filter": true,
+    "r": {
+      "pool_mult": 12,
+      "row_select": "topk",
+      "min_margin": 0.15,
+      "lambda_ua": 1.0,
+      "c_pub": true
+    }
+  },
+  "run": {
+    "utc": "20260829T123158Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 10000,
+  "n_synth_fraud": 13,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.0013,
+  "c_pub": {
+    "enabled": true,
+    "n_kept": 10000,
+    "constraint_violation_rate": 0.0,
+    "certificate_coverage": {
+      "legit": 9987,
+      "typology_transfer": 7,
+      "typology_cash_out": 6
+    },
+    "uncertified_fraud": 0
+  },
+  "r": {
+    "enabled": true,
+    "c_pub": true,
+    "row_select": "topk",
+    "n_pool": 120000,
+    "n_release": 10000,
+    "n_release_fraud": 13,
+    "target_fraud_rate": 0.001292,
+    "train_fraud_rate": 0.001292,
+    "rate_grid": [],
+    "min_margin": 0.15,
+    "lambda_ua": 1.0,
+    "n_val_candidates": 0,
+    "n_margin_kept": 119957,
+    "mean_u_h_row": 0.9122796852502588,
+    "mean_u_a_row": 0.00477109447400317,
+    "mean_margin_pool": 0.4976144527629984,
+    "mean_margin_release": 0.49983684787639343,
+    "val_pr_auc_selected": 0.0008799978718117483,
+    "c_pub_stats": {
+      "n_drawn": 120101,
+      "n_kept": 120000,
+      "reject_rate": 0.0008409588596264284,
+      "certificate_coverage": {
+        "legit": 119935,
+        "typology_cash_out": 53,
+        "typology_transfer": 12
+      },
+      "uncertified_fraud": 0
+    },
+    "note": "C_priv is the train-fitted bank detector; val is the U_h probe. Neither ships. topk is deterministic C_priv ranking; val_tables is the 13-row lottery (legacy)."
+  },
+  "dp": null,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 7.490103999999999,
+      "amount": 383623.2232854788,
+      "oldbalanceOrg": 272321.6430115201,
+      "newbalanceOrig": 157942.55873232003,
+      "oldbalanceDest": 139647.6879269956,
+      "newbalanceDest": 105292.17080892119
+    },
+    "total_variation": {
+      "type": 0.627756
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.0009359709641662009,
+    "recall_at_1pct_fpr": 0.0,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.49957930547999996,
+    "mean_nn_distance_members": 0.7569127877124894,
+    "mean_nn_distance_nonmembers": 0.7545818783120744,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.6498,
+    "public_evasion_asr": 0.2916666666666667,
+    "surrogate_evasion_asr": 0.8333333333333334,
+    "mean_abs_margin_on_test": 0.4990691516918743,
+    "note": "public_evasion_asr is scored on the real-trained bank detector (does not move with the synthesizer). surrogate_evasion_asr uses the synth-trained surrogate on the same public perturbation."
+  }
+}

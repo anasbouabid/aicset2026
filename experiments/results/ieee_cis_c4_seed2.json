@@ -1,0 +1,222 @@
+{
+  "protocol": "ieee_cis_c4",
+  "seed": 2,
+  "synthesizer": "ctgan",
+  "n_test_fraud": 2624,
+  "bank_pr_auc_real_test": 0.5099079559967522,
+  "bank_shap_real_test_fraud": {
+    "TransactionAmt": 0.1348284052543929,
+    "TransactionDT": 0.1455474365549659,
+    "C1": 0.7552189582808989,
+    "C2": 0.22268747506854578,
+    "C13": 0.5765049962509006,
+    "D1": 0.28916272614718486,
+    "V307": 0.1096104227884932,
+    "V310": 0.10622678339257614,
+    "V314": 0.06738006493515812,
+    "V317": 0.32325224458871077,
+    "V320": 0.02982987744097352,
+    "ProductCD": 0.5579144762052023,
+    "card4": 0.055152710391330496,
+    "card6": 0.24213430409335512,
+    "P_emaildomain": 0.19805483187762937,
+    "DeviceType": 0.3607017908714859
+  },
+  "note": "Primary C4 metric is rank_vs_bank_real_test on real held-out fraud. shap_on_synth_fraud_contrast is logged to show why SHAP-on-synth is not the claim. Certificates are C_pub ProductCD typologies, not count columns.",
+  "arms": {
+    "unfiltered": {
+      "honest_utility_pr_auc": 0.34130655115070513,
+      "certificates": {
+        "n_rows": 10000,
+        "n_fraud": 1076,
+        "uncertified_fraud": 0,
+        "typology_coverage": 1.0,
+        "certificate_coverage": {
+          "legit": 8924,
+          "typology_product_H": 103,
+          "typology_product_C": 442,
+          "typology_product_W": 407,
+          "typology_product_S": 40,
+          "typology_product_R": 84
+        },
+        "typology_counts": {
+          "typology_product_H": 103,
+          "typology_product_C": 442,
+          "typology_product_W": 407,
+          "typology_product_S": 40,
+          "typology_product_R": 84
+        },
+        "constraint_violation_rate": 0.0018
+      },
+      "shap_real_test_fraud": {
+        "TransactionAmt": 0.16921089916295848,
+        "TransactionDT": 0.2186289610068182,
+        "C1": 0.643413541312264,
+        "C2": 0.4056808171314767,
+        "C13": 0.7340366980286979,
+        "D1": 0.24014583795289926,
+        "V307": 0.12447567554924602,
+        "V310": 0.27814141431430994,
+        "V314": 0.06766206778952337,
+        "V317": 0.2424759482569597,
+        "V320": 0.0660949529532438,
+        "ProductCD": 0.32222670139078285,
+        "card4": 0.08746067026225053,
+        "card6": 0.13296249924995338,
+        "P_emaildomain": 0.3734614541507416,
+        "DeviceType": 0.1825289593413364
+      },
+      "rank_vs_bank_real_test": {
+        "spearman_rho": 0.7382352941176471,
+        "spearman_p": 0.0010928508118481525,
+        "top3_bank": [
+          "C1",
+          "C13",
+          "ProductCD"
+        ],
+        "top3_synth": [
+          "C13",
+          "C1",
+          "C2"
+        ],
+        "top3_overlap": [
+          "C1",
+          "C13"
+        ]
+      },
+      "shap_on_synth_fraud_contrast": {
+        "TransactionAmt": 0.17389127996647136,
+        "TransactionDT": 0.22453865366131337,
+        "C1": 0.6564736112195901,
+        "C2": 0.42348505953539606,
+        "C13": 0.7288824701104041,
+        "D1": 0.23901490255054847,
+        "V307": 0.15065806283185434,
+        "V310": 0.21368166000017227,
+        "V314": 0.07409838959268686,
+        "V317": 0.2640471046204867,
+        "V320": 0.2135639730294659,
+        "ProductCD": 0.31909726448042136,
+        "card4": 0.08755142382134376,
+        "card6": 0.13617700518413603,
+        "P_emaildomain": 0.3881797333400651,
+        "DeviceType": 0.19259251304563912
+      },
+      "rank_bank_vs_synth_test_contrast": {
+        "spearman_rho": 0.6794117647058824,
+        "spearman_p": 0.003793432669159745,
+        "top3_bank": [
+          "C1",
+          "C13",
+          "ProductCD"
+        ],
+        "top3_synth": [
+          "C13",
+          "C1",
+          "C2"
+        ],
+        "top3_overlap": [
+          "C1",
+          "C13"
+        ]
+      }
+    },
+    "rate_only_5pct": {
+      "honest_utility_pr_auc": 0.21338060538594075,
+      "certificates": {
+        "n_rows": 10000,
+        "n_fraud": 500,
+        "uncertified_fraud": 0,
+        "typology_coverage": 1.0,
+        "certificate_coverage": {
+          "legit": 9500,
+          "typology_product_W": 193,
+          "typology_product_C": 197,
+          "typology_product_S": 18,
+          "typology_product_H": 55,
+          "typology_product_R": 37
+        },
+        "typology_counts": {
+          "typology_product_W": 193,
+          "typology_product_C": 197,
+          "typology_product_S": 18,
+          "typology_product_H": 55,
+          "typology_product_R": 37
+        },
+        "constraint_violation_rate": 0.0
+      },
+      "shap_real_test_fraud": {
+        "TransactionAmt": 0.19526157699779043,
+        "TransactionDT": 0.1499658052051961,
+        "C1": 0.49726843294281964,
+        "C2": 0.5228521371607768,
+        "C13": 0.7107373824656672,
+        "D1": 0.30478408588920547,
+        "V307": 0.07623676842720974,
+        "V310": 0.19916166590443896,
+        "V314": 0.12000098186852386,
+        "V317": 0.27579464275516175,
+        "V320": 0.11015695795791554,
+        "ProductCD": 0.2629063714853988,
+        "card4": 0.11472338932349863,
+        "card6": 0.037070590800239056,
+        "P_emaildomain": 0.43625259951366074,
+        "DeviceType": 0.1138437318245525
+      },
+      "rank_vs_bank_real_test": {
+        "spearman_rho": 0.55,
+        "spearman_p": 0.027293972709730583,
+        "top3_bank": [
+          "C1",
+          "C13",
+          "ProductCD"
+        ],
+        "top3_synth": [
+          "C13",
+          "C2",
+          "C1"
+        ],
+        "top3_overlap": [
+          "C1",
+          "C13"
+        ]
+      },
+      "shap_on_synth_fraud_contrast": {
+        "TransactionAmt": 0.2281731577199925,
+        "TransactionDT": 0.16588883826460715,
+        "C1": 0.5674055758594865,
+        "C2": 0.5880410242775891,
+        "C13": 0.6921970212941225,
+        "D1": 0.30756255860339715,
+        "V307": 0.10894499123123047,
+        "V310": 0.21717304618999755,
+        "V314": 0.12681696475141602,
+        "V317": 0.3854661581423562,
+        "V320": 0.2621661559884752,
+        "ProductCD": 0.29264817660749387,
+        "card4": 0.12185518493371536,
+        "card6": 0.03803452833049487,
+        "P_emaildomain": 0.4569775913594196,
+        "DeviceType": 0.10075147466962645
+      },
+      "rank_bank_vs_synth_test_contrast": {
+        "spearman_rho": 0.45,
+        "spearman_p": 0.08029573654339643,
+        "top3_bank": [
+          "C1",
+          "C13",
+          "ProductCD"
+        ],
+        "top3_synth": [
+          "C13",
+          "C2",
+          "C1"
+        ],
+        "top3_overlap": [
+          "C1",
+          "C13"
+        ]
+      }
+    }
+  }
+}

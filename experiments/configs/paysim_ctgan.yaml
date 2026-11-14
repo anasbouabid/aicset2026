@@ -1,0 +1,15 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: enriched
+  all_fraud: true
+  n_legit: 40000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: ctgan
+n_synth: 10000
+output: results/paysim_ctgan.json

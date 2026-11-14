@@ -1,0 +1,404 @@
+{
+  "protocol": "ieee_cis_c3_mia",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "status": "fraud-slice cell; do not overwrite ieee_cis_c4 JSON",
+  "runs": [
+    {
+      "seed": 0,
+      "n_rows": 500000,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "n_train_fraud": 8748,
+      "n_ref_fraud": 3499,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 379,
+          "synth_fraud_rate": 0.0379,
+          "privacy": {
+            "mia_distance_auc": 0.51926724808,
+            "mean_nn_distance_members": 0.4810633418428225,
+            "mean_nn_distance_nonmembers": 0.5073702919767519,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.5082097139599999,
+            "mia_clf_ratio_auc": 0.50180115104,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5115072614490271,
+            "mia_clf_ratio_auc_fraud": 0.5038859817472288
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8619,
+          "synth_fraud_rate": 0.034476,
+          "privacy": {
+            "mia_distance_auc": 0.81568349674,
+            "mean_nn_distance_members": 0.08142025647059924,
+            "mean_nn_distance_nonmembers": 0.22585833227856747,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.66869975388,
+            "mia_clf_ratio_auc": 0.50255224596,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.6601534406099978,
+            "mia_clf_ratio_auc_fraud": 0.5080821871430614
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 346,
+          "synth_fraud_rate": 0.0346,
+          "privacy": {
+            "mia_distance_auc": 0.50068218982,
+            "mean_nn_distance_members": 0.8890132114815028,
+            "mean_nn_distance_nonmembers": 0.895163884744829,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49967135668,
+            "mia_clf_ratio_auc": 0.50169932468,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.49151471492103527,
+            "mia_clf_ratio_auc_fraud": 0.5066227667361296
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 1022,
+          "synth_fraud_rate": 0.1022,
+          "privacy": {
+            "mia_distance_auc": 0.50099166662,
+            "mean_nn_distance_members": 0.7352158723139871,
+            "mean_nn_distance_nonmembers": 0.7422125488940906,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49879937139999997,
+            "mia_clf_ratio_auc": 0.4996806730400001,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5065043373141828,
+            "mia_clf_ratio_auc_fraud": 0.5099530713611776
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "privacy": {
+            "mia_distance_auc": 0.50030366774,
+            "mean_nn_distance_members": 0.7334529264066447,
+            "mean_nn_distance_nonmembers": 0.7399216865651801,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49983160948,
+            "mia_clf_ratio_auc": 0.49990377768000005,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5054844194723067,
+            "mia_clf_ratio_auc_fraud": 0.5026405447439689
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "n_rows": 500000,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "n_train_fraud": 8747,
+      "n_ref_fraud": 3499,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 397,
+          "synth_fraud_rate": 0.0397,
+          "privacy": {
+            "mia_distance_auc": 0.52119950888,
+            "mean_nn_distance_members": 0.47568296017487033,
+            "mean_nn_distance_nonmembers": 0.5022868602866299,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.50855884752,
+            "mia_clf_ratio_auc": 0.5024041351199999,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8747,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.4964875321461192,
+            "mia_clf_ratio_auc_fraud": 0.5109212319662911
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8838,
+          "synth_fraud_rate": 0.035352,
+          "privacy": {
+            "mia_distance_auc": 0.8160873824199999,
+            "mean_nn_distance_members": 0.07912243151843806,
+            "mean_nn_distance_nonmembers": 0.21847325885125785,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.6648339655200001,
+            "mia_clf_ratio_auc": 0.50348500372,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8747,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.657869073856442,
+            "mia_clf_ratio_auc_fraud": 0.5007908616941148
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 355,
+          "synth_fraud_rate": 0.0355,
+          "privacy": {
+            "mia_distance_auc": 0.50258478042,
+            "mean_nn_distance_members": 0.9025264052968642,
+            "mean_nn_distance_nonmembers": 0.9216378543275204,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.5001954737600001,
+            "mia_clf_ratio_auc": 0.5016146188,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8747,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.4952986576529743,
+            "mia_clf_ratio_auc_fraud": 0.5135326966305135
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 901,
+          "synth_fraud_rate": 0.0901,
+          "privacy": {
+            "mia_distance_auc": 0.50147990932,
+            "mean_nn_distance_members": 0.7071075575953233,
+            "mean_nn_distance_nonmembers": 0.7243340022012759,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49999868392,
+            "mia_clf_ratio_auc": 0.50002076608,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8747,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.4890017670356374,
+            "mia_clf_ratio_auc_fraud": 0.48779158326798383
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "privacy": {
+            "mia_distance_auc": 0.5015097002,
+            "mean_nn_distance_members": 0.710244782595106,
+            "mean_nn_distance_nonmembers": 0.7281361350791986,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49959763360000004,
+            "mia_clf_ratio_auc": 0.49896617524,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8747,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.495065432219087,
+            "mia_clf_ratio_auc_fraud": 0.4870104937718416
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "n_rows": 500000,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "n_train_fraud": 8748,
+      "n_ref_fraud": 3499,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 330,
+          "synth_fraud_rate": 0.033,
+          "privacy": {
+            "mia_distance_auc": 0.51950459784,
+            "mean_nn_distance_members": 0.47913237608529397,
+            "mean_nn_distance_nonmembers": 0.49740653000184043,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.50852948696,
+            "mia_clf_ratio_auc": 0.50449674576,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5072219725531318,
+            "mia_clf_ratio_auc_fraud": 0.5021850947291587
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8794,
+          "synth_fraud_rate": 0.035176,
+          "privacy": {
+            "mia_distance_auc": 0.8170872598,
+            "mean_nn_distance_members": 0.07866800542516243,
+            "mean_nn_distance_nonmembers": 0.21771862147434548,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.66879081992,
+            "mia_clf_ratio_auc": 0.50299543272,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.658286935404724,
+            "mia_clf_ratio_auc_fraud": 0.5060427762889135
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 358,
+          "synth_fraud_rate": 0.0358,
+          "privacy": {
+            "mia_distance_auc": 0.49918472197999997,
+            "mean_nn_distance_members": 0.9022742738526338,
+            "mean_nn_distance_nonmembers": 0.8929646770549458,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.49813813336,
+            "mia_clf_ratio_auc": 0.49853316447999996,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5021779379842894,
+            "mia_clf_ratio_auc_fraud": 0.5062875761784839
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 1076,
+          "synth_fraud_rate": 0.1076,
+          "privacy": {
+            "mia_distance_auc": 0.50041002526,
+            "mean_nn_distance_members": 0.7011307418545338,
+            "mean_nn_distance_nonmembers": 0.6927189953862689,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.50110031792,
+            "mia_clf_ratio_auc": 0.49927661883999996,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5025010045586178,
+            "mia_clf_ratio_auc_fraud": 0.5050752758843449
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "privacy": {
+            "mia_distance_auc": 0.5003921125,
+            "mean_nn_distance_members": 0.701007583961526,
+            "mean_nn_distance_nonmembers": 0.6922378778479231,
+            "note": "mean_nn_distance is logged, not a privacy claim"
+          },
+          "density_ratio": {
+            "n_ref_fit": 50000,
+            "n_ref_eval": 50000,
+            "n_neighbors": 5,
+            "mia_knn_ratio_auc": 0.5005297736800001,
+            "mia_clf_ratio_auc": 0.4988629855999999,
+            "note": "Density-ratio MIA uses a reference split (same as the harness ref). It is not a no-auxiliary-data attack.",
+            "n_fraud_members": 8748,
+            "n_fraud_nonmembers_eval": 1749,
+            "mia_knn_ratio_auc_fraud": 0.5014508257772486,
+            "mia_clf_ratio_auc_fraud": 0.5070721384196809
+          }
+        }
+      ]
+    }
+  ]
+}

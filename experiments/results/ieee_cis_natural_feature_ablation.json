@@ -1,0 +1,203 @@
+{
+  "run": {
+    "utc": "20260830T162222Z",
+    "python": "3.11.16"
+  },
+  "protocol": "natural",
+  "n_rows": 500000,
+  "n_fraud": 17495,
+  "fraud_rate": 0.03499,
+  "seed": 0,
+  "n_test_fraud": 2624,
+  "missing_frac": {
+    "TransactionAmt": 0.0,
+    "TransactionDT": 0.0,
+    "C1": 0.0,
+    "C2": 0.0,
+    "C13": 0.0,
+    "D1": 0.0,
+    "V307": 0.0,
+    "V310": 0.0,
+    "V314": 0.0,
+    "V317": 0.0,
+    "V320": 0.0,
+    "ProductCD": 0.0,
+    "card4": 0.0,
+    "card6": 0.0,
+    "P_emaildomain": 0.0,
+    "DeviceType": 0.0
+  },
+  "slices": [
+    {
+      "slice": "full",
+      "n_features": 16,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "C1",
+        "C2",
+        "C13",
+        "D1",
+        "V307",
+        "V310",
+        "V314",
+        "V317",
+        "V320",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.483846244398836
+    },
+    {
+      "slice": "public",
+      "n_features": 7,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.2027999527858219
+    },
+    {
+      "slice": "counts",
+      "n_features": 4,
+      "features": [
+        "C1",
+        "C2",
+        "C13",
+        "ProductCD"
+      ],
+      "pr_auc": 0.4066000156754815
+    },
+    {
+      "slice": "delays",
+      "n_features": 2,
+      "features": [
+        "D1",
+        "ProductCD"
+      ],
+      "pr_auc": 0.09585474466840509
+    },
+    {
+      "slice": "v",
+      "n_features": 6,
+      "features": [
+        "V307",
+        "V310",
+        "V314",
+        "V317",
+        "V320",
+        "ProductCD"
+      ],
+      "pr_auc": 0.14637502613430375
+    },
+    {
+      "slice": "amt_product",
+      "n_features": 2,
+      "features": [
+        "TransactionAmt",
+        "ProductCD"
+      ],
+      "pr_auc": 0.11501890105543416
+    },
+    {
+      "slice": "no_counts",
+      "n_features": 13,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "D1",
+        "V307",
+        "V310",
+        "V314",
+        "V317",
+        "V320",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.2590517900558864
+    },
+    {
+      "slice": "public_plus_v",
+      "n_features": 12,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "V307",
+        "V310",
+        "V314",
+        "V317",
+        "V320",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.2492485520433508
+    },
+    {
+      "slice": "public_plus_v_d1",
+      "n_features": 13,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "V307",
+        "V310",
+        "V314",
+        "V317",
+        "V320",
+        "D1",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.2590517900558864
+    },
+    {
+      "slice": "counts_plus_public",
+      "n_features": 10,
+      "features": [
+        "TransactionAmt",
+        "TransactionDT",
+        "C1",
+        "C2",
+        "C13",
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "DeviceType"
+      ],
+      "pr_auc": 0.4435030000364169
+    },
+    {
+      "slice": "public_product_C",
+      "n_features": 1,
+      "features": [
+        "ProductCD"
+      ],
+      "pr_auc": 0.06486959462511292,
+      "fraud_rate_by_product": {
+        "C": 0.11655585793516827,
+        "H": 0.047740498599037284,
+        "R": 0.038010412093081605,
+        "S": 0.05928853754940711,
+        "W": 0.020416220179346908
+      }
+    }
+  ],
+  "note": "Real train/test only; no synthesizer. Same split fractions as PaySim T1. no_counts = compact schema without C1/C2/C13. If no_counts PR-AUC is near public, counts are the honest residual and G-on-C is a PaySim-style dead end."
+}

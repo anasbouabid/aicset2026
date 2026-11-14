@@ -1,0 +1,24 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: -1
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: ctgan
+n_synth: 10000
+r_filter: true
+r:
+  pool_mult: 12
+  min_margin: 0.15
+  c_pub: true
+# Full dump (6.36M). Do not overwrite 500k natural-rate JSON.
+output_unfiltered: results/paysim_full_ctgan_unfiltered.json
+r_outputs:
+  - rate: 0.05
+    controllers:
+      rate_only: results/paysim_full_ctgan_r05_rateonly.json

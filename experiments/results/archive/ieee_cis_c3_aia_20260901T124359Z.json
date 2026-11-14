@@ -1,0 +1,686 @@
+{
+  "protocol": "ieee_cis_c3_aia",
+  "targets": [
+    "card6",
+    "card4",
+    "DeviceType"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "status": "attribute inference scored; do not overwrite c4/c3 mia/recon JSON",
+  "cite": "stadler2022synthetic",
+  "runs": [
+    {
+      "seed": 0,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 379,
+          "synth_fraud_rate": 0.0379,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.8024,
+                "acc_ref": 0.7981,
+                "advantage": 0.0042999999999999705,
+                "majority_acc_ref": 0.744,
+                "lift_vs_majority": 0.05410000000000004
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6545,
+                "acc_ref": 0.65645,
+                "advantage": -0.0019500000000000073,
+                "majority_acc_ref": 0.6566,
+                "lift_vs_majority": -0.00014999999999998348
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8985,
+                "acc_ref": 0.8975,
+                "advantage": 0.0010000000000000009,
+                "majority_acc_ref": 0.757,
+                "lift_vs_majority": 0.14049999999999996
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8619,
+          "synth_fraud_rate": 0.034476,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 19999,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.8027,
+                "acc_ref": 0.8022,
+                "advantage": 0.0004999999999999449,
+                "majority_acc_ref": 0.744,
+                "lift_vs_majority": 0.05820000000000003
+              },
+              "card4": {
+                "n_fit": 20000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6595,
+                "acc_ref": 0.66045,
+                "advantage": -0.0009500000000000064,
+                "majority_acc_ref": 0.6566,
+                "lift_vs_majority": 0.00385000000000002
+              },
+              "DeviceType": {
+                "n_fit": 20000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.90015,
+                "acc_ref": 0.89805,
+                "advantage": 0.0020999999999999908,
+                "majority_acc_ref": 0.757,
+                "lift_vs_majority": 0.14105
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 346,
+          "synth_fraud_rate": 0.0346,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.74315,
+                "acc_ref": 0.74125,
+                "advantage": 0.0019000000000000128,
+                "majority_acc_ref": 0.744,
+                "lift_vs_majority": -0.00275000000000003
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.64805,
+                "acc_ref": 0.65075,
+                "advantage": -0.0027000000000000357,
+                "majority_acc_ref": 0.6566,
+                "lift_vs_majority": -0.005849999999999911
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.76315,
+                "acc_ref": 0.7555,
+                "advantage": 0.007650000000000046,
+                "majority_acc_ref": 0.757,
+                "lift_vs_majority": -0.0015000000000000568
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 1022,
+          "synth_fraud_rate": 0.1022,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.78015,
+                "acc_ref": 0.7783,
+                "advantage": 0.0018500000000000183,
+                "majority_acc_ref": 0.744,
+                "lift_vs_majority": 0.0343
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.61095,
+                "acc_ref": 0.61435,
+                "advantage": -0.0033999999999999586,
+                "majority_acc_ref": 0.6566,
+                "lift_vs_majority": -0.04225000000000001
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8855,
+                "acc_ref": 0.88625,
+                "advantage": -0.0007500000000000284,
+                "majority_acc_ref": 0.757,
+                "lift_vs_majority": 0.12924999999999998
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.78705,
+                "acc_ref": 0.7864,
+                "advantage": 0.0006500000000000394,
+                "majority_acc_ref": 0.744,
+                "lift_vs_majority": 0.04239999999999999
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.60185,
+                "acc_ref": 0.60365,
+                "advantage": -0.0018000000000000238,
+                "majority_acc_ref": 0.6566,
+                "lift_vs_majority": -0.05294999999999994
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8847,
+                "acc_ref": 0.88525,
+                "advantage": -0.0005499999999999394,
+                "majority_acc_ref": 0.757,
+                "lift_vs_majority": 0.12824999999999998
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 397,
+          "synth_fraud_rate": 0.0397,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.80025,
+                "acc_ref": 0.79045,
+                "advantage": 0.009800000000000031,
+                "majority_acc_ref": 0.73555,
+                "lift_vs_majority": 0.05489999999999995
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.65095,
+                "acc_ref": 0.64375,
+                "advantage": 0.007199999999999984,
+                "majority_acc_ref": 0.6429,
+                "lift_vs_majority": 0.0008500000000000174
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8962,
+                "acc_ref": 0.893,
+                "advantage": 0.0031999999999999806,
+                "majority_acc_ref": 0.75635,
+                "lift_vs_majority": 0.13665000000000005
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8838,
+          "synth_fraud_rate": 0.035352,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 19999,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.80445,
+                "acc_ref": 0.7963,
+                "advantage": 0.00814999999999999,
+                "majority_acc_ref": 0.73555,
+                "lift_vs_majority": 0.06074999999999997
+              },
+              "card4": {
+                "n_fit": 20000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6558,
+                "acc_ref": 0.64865,
+                "advantage": 0.007150000000000101,
+                "majority_acc_ref": 0.6429,
+                "lift_vs_majority": 0.005749999999999922
+              },
+              "DeviceType": {
+                "n_fit": 20000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.89775,
+                "acc_ref": 0.89645,
+                "advantage": 0.0013000000000000789,
+                "majority_acc_ref": 0.75635,
+                "lift_vs_majority": 0.1401
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 355,
+          "synth_fraud_rate": 0.0355,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.7462,
+                "acc_ref": 0.7346,
+                "advantage": 0.011599999999999944,
+                "majority_acc_ref": 0.73555,
+                "lift_vs_majority": -0.0009500000000000064
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.643,
+                "acc_ref": 0.63585,
+                "advantage": 0.00714999999999999,
+                "majority_acc_ref": 0.6429,
+                "lift_vs_majority": -0.007050000000000001
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.76055,
+                "acc_ref": 0.75445,
+                "advantage": 0.006099999999999994,
+                "majority_acc_ref": 0.75635,
+                "lift_vs_majority": -0.0019000000000000128
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 901,
+          "synth_fraud_rate": 0.0901,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.775,
+                "acc_ref": 0.76865,
+                "advantage": 0.006349999999999967,
+                "majority_acc_ref": 0.73555,
+                "lift_vs_majority": 0.03310000000000002
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.64995,
+                "acc_ref": 0.6423,
+                "advantage": 0.007650000000000046,
+                "majority_acc_ref": 0.6429,
+                "lift_vs_majority": -0.0006000000000000449
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.89245,
+                "acc_ref": 0.88915,
+                "advantage": 0.0032999999999999696,
+                "majority_acc_ref": 0.75635,
+                "lift_vs_majority": 0.13280000000000003
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.78385,
+                "acc_ref": 0.77005,
+                "advantage": 0.013800000000000034,
+                "majority_acc_ref": 0.73555,
+                "lift_vs_majority": 0.034499999999999975
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.64685,
+                "acc_ref": 0.6391,
+                "advantage": 0.007750000000000035,
+                "majority_acc_ref": 0.6429,
+                "lift_vs_majority": -0.0038000000000000256
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.88815,
+                "acc_ref": 0.88695,
+                "advantage": 0.0011999999999999789,
+                "majority_acc_ref": 0.75635,
+                "lift_vs_majority": 0.13060000000000005
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "n_train": 250000,
+      "n_ref": 100000,
+      "ctgan_from_c4_cache": true,
+      "arms": [
+        {
+          "name": "identity_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 330,
+          "synth_fraud_rate": 0.033,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 9999,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.80185,
+                "acc_ref": 0.8012,
+                "advantage": 0.0006499999999999284,
+                "majority_acc_ref": 0.7464,
+                "lift_vs_majority": 0.05480000000000007
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.65385,
+                "acc_ref": 0.6561,
+                "advantage": -0.0022499999999999742,
+                "majority_acc_ref": 0.65335,
+                "lift_vs_majority": 0.00275000000000003
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8943,
+                "acc_ref": 0.8924,
+                "advantage": 0.0019000000000000128,
+                "majority_acc_ref": 0.7585,
+                "lift_vs_majority": 0.13390000000000002
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "identity_ntrain",
+          "n_synth": 250000,
+          "n_synth_fraud": 8794,
+          "synth_fraud_rate": 0.035176,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 19999,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.80565,
+                "acc_ref": 0.80255,
+                "advantage": 0.0030999999999999917,
+                "majority_acc_ref": 0.7464,
+                "lift_vs_majority": 0.05615000000000003
+              },
+              "card4": {
+                "n_fit": 20000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6564,
+                "acc_ref": 0.6575,
+                "advantage": -0.0010999999999999899,
+                "majority_acc_ref": 0.65335,
+                "lift_vs_majority": 0.004149999999999987
+              },
+              "DeviceType": {
+                "n_fit": 20000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8979,
+                "acc_ref": 0.89735,
+                "advantage": 0.0005500000000000504,
+                "majority_acc_ref": 0.7585,
+                "lift_vs_majority": 0.13885000000000003
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "independent_10k",
+          "n_synth": 10000,
+          "n_synth_fraud": 358,
+          "synth_fraud_rate": 0.0358,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 9999,
+                "n_classes": 3,
+                "majority": "debit",
+                "acc_train": 0.74445,
+                "acc_ref": 0.7451,
+                "advantage": -0.0006500000000000394,
+                "majority_acc_ref": 0.7464,
+                "lift_vs_majority": -0.0012999999999999678
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6424,
+                "acc_ref": 0.64705,
+                "advantage": -0.004650000000000043,
+                "majority_acc_ref": 0.65335,
+                "lift_vs_majority": -0.006299999999999972
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.75775,
+                "acc_ref": 0.75745,
+                "advantage": 0.000300000000000078,
+                "majority_acc_ref": 0.7585,
+                "lift_vs_majority": -0.0010499999999999954
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_unfiltered",
+          "n_synth": 10000,
+          "n_synth_fraud": 1076,
+          "synth_fraud_rate": 0.1076,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.7892,
+                "acc_ref": 0.79065,
+                "advantage": -0.0014499999999999513,
+                "majority_acc_ref": 0.7464,
+                "lift_vs_majority": 0.04425000000000001
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.6407,
+                "acc_ref": 0.64185,
+                "advantage": -0.0011499999999999844,
+                "majority_acc_ref": 0.65335,
+                "lift_vs_majority": -0.011499999999999955
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.88535,
+                "acc_ref": 0.87915,
+                "advantage": 0.006199999999999983,
+                "majority_acc_ref": 0.7585,
+                "lift_vs_majority": 0.12065000000000003
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        },
+        {
+          "name": "ctgan_r05_rateonly",
+          "n_synth": 10000,
+          "n_synth_fraud": 500,
+          "synth_fraud_rate": 0.05,
+          "attribute_inference": {
+            "eval_n": 20000,
+            "fit_cap": 20000,
+            "targets": {
+              "card6": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "debit",
+                "acc_train": 0.7889,
+                "acc_ref": 0.7882,
+                "advantage": 0.0007000000000000339,
+                "majority_acc_ref": 0.7464,
+                "lift_vs_majority": 0.04180000000000006
+              },
+              "card4": {
+                "n_fit": 10000,
+                "n_classes": 5,
+                "majority": "visa",
+                "acc_train": 0.63835,
+                "acc_ref": 0.64285,
+                "advantage": -0.0045000000000000595,
+                "majority_acc_ref": 0.65335,
+                "lift_vs_majority": -0.010499999999999954
+              },
+              "DeviceType": {
+                "n_fit": 10000,
+                "n_classes": 3,
+                "majority": "missing",
+                "acc_train": 0.8867,
+                "acc_ref": 0.88185,
+                "advantage": 0.004850000000000021,
+                "majority_acc_ref": 0.7585,
+                "lift_vs_majority": 0.12335000000000007
+              }
+            },
+            "note": "Predictor is fit on the released table only. Ref is evaluation. Not synth-vs-ref MIA. Not SearchAttack."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "config": {
+    "seed": 0,
+    "dataset": "paysim",
+    "paysim": {
+      "path": "../data/raw/paysim.parquet",
+      "protocol": "natural",
+      "n_rows": 500000
+    },
+    "splits": {
+      "train": 0.5,
+      "ref": 0.2,
+      "val": 0.15,
+      "test": 0.15
+    },
+    "synthesizer": "identity",
+    "n_synth": 250000
+  },
+  "run": {
+    "utc": "20260828T232116Z",
+    "python": "3.11.16"
+  },
+  "dataset": "paysim",
+  "n_rows": 500000,
+  "n_fraud": 645,
+  "n_train": 250000,
+  "n_ref": 100000,
+  "n_val": 75000,
+  "n_test": 75000,
+  "n_synth": 250000,
+  "n_synth_fraud": 347,
+  "fraud_rate": 0.00129,
+  "synth_fraud_rate": 0.001388,
+  "fidelity": {
+    "wasserstein1": {
+      "step": 0.20231999999999983,
+      "amount": 1605.747442600089,
+      "oldbalanceOrg": 6469.497450280007,
+      "newbalanceOrig": 6996.905426520034,
+      "oldbalanceDest": 10806.574794481237,
+      "newbalanceDest": 12050.54285788138
+    },
+    "total_variation": {
+      "type": 0.002495999999999983
+    },
+    "constraint_violation_rate": 0.0
+  },
+  "honest_utility": {
+    "pr_auc": 0.1363083872991697,
+    "recall_at_1pct_fpr": 0.4375,
+    "n_test": 75000,
+    "n_test_fraud": 96
+  },
+  "privacy": {
+    "mia_distance_auc": 0.81530462268,
+    "mean_nn_distance_members": 0.016954187956368865,
+    "mean_nn_distance_nonmembers": 0.04656398559000152,
+    "note": "mean_nn_distance is logged, not a privacy claim"
+  },
+  "adversarial_utility": {
+    "surrogate_label_agreement": 0.9460133333333334,
+    "public_evasion_asr": 0.2916666666666667,
+    "mean_abs_margin_on_test": 0.4990691516918743
+  }
+}

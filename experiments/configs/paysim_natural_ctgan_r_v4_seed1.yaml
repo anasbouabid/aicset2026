@@ -1,0 +1,34 @@
+seed: 1
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: ctgan
+n_synth: 10000
+r_filter: true
+r:
+  pool_mult: 12
+  row_select: topk
+  min_margin: 0.15
+  lambda_ua: 1.0
+  c_pub: true
+output_unfiltered: results/paysim_natural_ctgan_r_v4_seed1_unfiltered.json
+r_outputs:
+  - rate: 0.02
+    controllers:
+      topk: results/paysim_natural_ctgan_r_v4_seed1_r02.json
+      rate_only: results/paysim_natural_ctgan_r_v4_seed1_r02_rateonly.json
+      margin_random: results/paysim_natural_ctgan_r_v4_seed1_r02_margin.json
+      type_topk: results/paysim_natural_ctgan_r_v4_seed1_r02_typetopk.json
+  - rate: 0.05
+    controllers:
+      topk: results/paysim_natural_ctgan_r_v4_seed1_r05.json
+      rate_only: results/paysim_natural_ctgan_r_v4_seed1_r05_rateonly.json
+      margin_random: results/paysim_natural_ctgan_r_v4_seed1_r05_margin.json
+      type_topk: results/paysim_natural_ctgan_r_v4_seed1_r05_typetopk.json

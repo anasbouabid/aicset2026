@@ -1,0 +1,26 @@
+seed: 0
+dataset: toy
+n_rows: 4000
+fraud_rate: 0.08
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: independent
+n_synth: 2000
+r_filter: true
+r:
+  pool_mult: 4
+  row_select: topk
+  min_margin: 0.05
+  lambda_ua: 1.0
+  c_pub: true
+# Declared rates: val does not choose.
+r_outputs:
+  - rate: 0.05
+    output: results/smoke_r_v3_r05.json
+    output_rate_only: results/smoke_r_v3_r05_rateonly.json
+  - rate: 0.10
+    output: results/smoke_r_v3_r10.json
+    output_rate_only: results/smoke_r_v3_r10_rateonly.json

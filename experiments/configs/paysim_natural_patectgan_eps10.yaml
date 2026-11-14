@@ -1,0 +1,20 @@
+seed: 0
+dataset: paysim
+paysim:
+  path: ../data/raw/paysim.parquet
+  protocol: natural
+  n_rows: 500000
+splits:
+  train: 0.50
+  ref: 0.20
+  val: 0.15
+  test: 0.15
+synthesizer: patectgan
+synth:
+  epsilon: 10.0
+  preprocessor_eps: 1.0
+  sample_per_teacher: 10000
+  teacher_iters: 5
+  student_iters: 5
+n_synth: 10000
+output: results/paysim_natural_patectgan_eps10.json
